@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
+  <!-- 
     Microsoft ResX Schema 
-
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,39 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bOperaciones.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        5OSMMn19/wG7ontbgT8MzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>81</value>
-  </metadata>
 </root>

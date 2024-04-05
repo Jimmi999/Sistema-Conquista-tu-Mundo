@@ -61,10 +61,16 @@ Public Class frmLogin
     End Sub
 
     Private Sub btnIngresar_Click(sender As Object, e As EventArgs) Handles btnIngresar.Click
-        If txtUsuario.Text = "" Or txtContrasena.Text = "" Then
-            epLogin.SetError(txtContrasena, "Los campos son obligatorios.")
+        epLogin.Clear()
+        If txtUsuario.Text = "" Then
+            epLogin.SetError(txtUsuario, "Debe ingresar un usuario.")
+            Return
+        ElseIf txtContrasena.Text = "" Then
+            epLogin.SetError(txtContrasena, "Debe ingresar una contraseña.")
             Return
         End If
+
+
         Login()
 
     End Sub
@@ -116,7 +122,7 @@ Public Class frmLogin
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CentrarForm(Me)
-
+        txtUsuario.Select()
     End Sub
 
     ' Declarar una instancia privada compartida para garantizar que solo haya una instancia de frmLogin
@@ -154,6 +160,7 @@ Public Class frmLogin
             txtContrasena.Focus()
         End If
     End Sub
+
 
 
 

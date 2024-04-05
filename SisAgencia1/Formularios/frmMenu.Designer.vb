@@ -22,84 +22,95 @@ Partial Class frmMenu
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMenu))
-        tlpMenu = New TableLayoutPanel()
         gbMenu = New GroupBox()
-        bOperaciones = New Button()
+        Label3 = New Label()
+        Panel2 = New Panel()
+        Panel1 = New Panel()
         bPersonal = New Button()
+        bOperaciones = New Button()
         bServicios = New Button()
         bVentas = New Button()
         lblDescripcion = New Label()
-        PictureBox1 = New PictureBox()
-        tlpMenu.SuspendLayout()
+        Label1 = New Label()
+        Timer1 = New Timer(components)
+        Label2 = New Label()
         gbMenu.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' tlpMenu
-        ' 
-        tlpMenu.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        tlpMenu.BackColor = Color.Azure
-        tlpMenu.ColumnCount = 3
-        tlpMenu.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 13.2231407F))
-        tlpMenu.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 86.77686F))
-        tlpMenu.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 85F))
-        tlpMenu.Controls.Add(gbMenu, 1, 1)
-        tlpMenu.Controls.Add(lblDescripcion, 1, 2)
-        tlpMenu.Controls.Add(PictureBox1, 0, 2)
-        tlpMenu.Location = New Point(12, 12)
-        tlpMenu.Name = "tlpMenu"
-        tlpMenu.RowCount = 3
-        tlpMenu.RowStyles.Add(New RowStyle(SizeType.Percent, 13.8235292F))
-        tlpMenu.RowStyles.Add(New RowStyle(SizeType.Percent, 86.17647F))
-        tlpMenu.RowStyles.Add(New RowStyle(SizeType.Absolute, 69F))
-        tlpMenu.Size = New Size(776, 426)
-        tlpMenu.TabIndex = 0
         ' 
         ' gbMenu
         ' 
-        gbMenu.Anchor = AnchorStyles.None
-        gbMenu.Controls.Add(bOperaciones)
-        gbMenu.Controls.Add(bPersonal)
-        gbMenu.Controls.Add(bServicios)
-        gbMenu.Controls.Add(bVentas)
+        gbMenu.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
+        gbMenu.Controls.Add(Label3)
+        gbMenu.Controls.Add(Panel2)
+        gbMenu.Controls.Add(Panel1)
         gbMenu.FlatStyle = FlatStyle.Flat
-        gbMenu.Location = New Point(207, 87)
+        gbMenu.Location = New Point(12, 4)
         gbMenu.Name = "gbMenu"
-        gbMenu.Size = New Size(366, 230)
+        gbMenu.Size = New Size(376, 747)
         gbMenu.TabIndex = 0
         gbMenu.TabStop = False
         ' 
-        ' bOperaciones
+        ' Label3
         ' 
-        bOperaciones.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        bOperaciones.BackColor = Color.SteelBlue
-        bOperaciones.FlatStyle = FlatStyle.Flat
-        bOperaciones.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        bOperaciones.ForeColor = Color.White
-        bOperaciones.Image = CType(resources.GetObject("bOperaciones.Image"), Image)
-        bOperaciones.Location = New Point(16, 120)
-        bOperaciones.Name = "bOperaciones"
-        bOperaciones.Size = New Size(164, 95)
-        bOperaciones.TabIndex = 3
-        bOperaciones.Text = "Operaciones"
-        bOperaciones.TextAlign = ContentAlignment.BottomCenter
-        bOperaciones.UseVisualStyleBackColor = False
+        Label3.AutoSize = True
+        Label3.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.ForeColor = Color.SteelBlue
+        Label3.Location = New Point(10, 14)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(117, 20)
+        Label3.TabIndex = 6
+        Label3.Text = "Herramientas"
+        ' 
+        ' Panel2
+        ' 
+        Panel2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Panel2.Location = New Point(6, 205)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(364, 533)
+        Panel2.TabIndex = 5
+        ' 
+        ' Panel1
+        ' 
+        Panel1.Controls.Add(bPersonal)
+        Panel1.Controls.Add(bOperaciones)
+        Panel1.Controls.Add(bServicios)
+        Panel1.Controls.Add(bVentas)
+        Panel1.Controls.Add(lblDescripcion)
+        Panel1.Location = New Point(6, 39)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(364, 132)
+        Panel1.TabIndex = 4
         ' 
         ' bPersonal
         ' 
         bPersonal.BackColor = Color.SteelBlue
         bPersonal.FlatStyle = FlatStyle.Flat
-        bPersonal.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bPersonal.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         bPersonal.ForeColor = Color.White
         bPersonal.Image = My.Resources.Resources.icons8_grupo_de_primer_plano_seleccionado_60
-        bPersonal.Location = New Point(186, 120)
+        bPersonal.Location = New Point(276, 3)
         bPersonal.Name = "bPersonal"
-        bPersonal.Size = New Size(164, 95)
-        bPersonal.TabIndex = 2
-        bPersonal.Text = "Personal"
+        bPersonal.Size = New Size(85, 85)
+        bPersonal.TabIndex = 3
         bPersonal.TextAlign = ContentAlignment.BottomCenter
         bPersonal.UseVisualStyleBackColor = False
+        ' 
+        ' bOperaciones
+        ' 
+        bOperaciones.BackColor = Color.SteelBlue
+        bOperaciones.FlatStyle = FlatStyle.Flat
+        bOperaciones.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        bOperaciones.ForeColor = Color.White
+        bOperaciones.Image = CType(resources.GetObject("bOperaciones.Image"), Image)
+        bOperaciones.Location = New Point(185, 3)
+        bOperaciones.Name = "bOperaciones"
+        bOperaciones.Size = New Size(85, 85)
+        bOperaciones.TabIndex = 2
+        bOperaciones.TextAlign = ContentAlignment.BottomCenter
+        bOperaciones.UseVisualStyleBackColor = False
         ' 
         ' bServicios
         ' 
@@ -108,11 +119,10 @@ Partial Class frmMenu
         bServicios.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         bServicios.ForeColor = Color.White
         bServicios.Image = My.Resources.Resources.icons8_cascada_40
-        bServicios.Location = New Point(186, 19)
+        bServicios.Location = New Point(94, 3)
         bServicios.Name = "bServicios"
-        bServicios.Size = New Size(164, 95)
+        bServicios.Size = New Size(85, 85)
         bServicios.TabIndex = 1
-        bServicios.Text = "Servicios"
         bServicios.TextAlign = ContentAlignment.BottomCenter
         bServicios.UseVisualStyleBackColor = False
         ' 
@@ -123,59 +133,84 @@ Partial Class frmMenu
         bVentas.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         bVentas.ForeColor = Color.White
         bVentas.Image = My.Resources.Resources.icons8_barato_2_60
-        bVentas.Location = New Point(16, 19)
+        bVentas.Location = New Point(3, 3)
         bVentas.Name = "bVentas"
-        bVentas.Size = New Size(164, 95)
+        bVentas.Size = New Size(85, 85)
         bVentas.TabIndex = 0
-        bVentas.Text = "Ventas"
         bVentas.TextAlign = ContentAlignment.BottomCenter
         bVentas.UseVisualStyleBackColor = False
         ' 
         ' lblDescripcion
         ' 
-        lblDescripcion.Anchor = AnchorStyles.Top
         lblDescripcion.AutoSize = True
         lblDescripcion.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblDescripcion.ForeColor = Color.SteelBlue
-        lblDescripcion.Location = New Point(359, 356)
+        lblDescripcion.Location = New Point(4, 100)
         lblDescripcion.Name = "lblDescripcion"
-        lblDescripcion.Size = New Size(63, 20)
+        lblDescripcion.Size = New Size(21, 20)
         lblDescripcion.TabIndex = 1
-        lblDescripcion.Text = "Label1"
+        lblDescripcion.Text = "S"
+        lblDescripcion.TextAlign = ContentAlignment.MiddleCenter
         lblDescripcion.Visible = False
         ' 
-        ' PictureBox1
+        ' Label1
         ' 
-        PictureBox1.Image = My.Resources.Resources.output_onlinepngtools__1_3
-        PictureBox1.Location = New Point(3, 359)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(85, 58)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 3
-        PictureBox1.TabStop = False
+        Label1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Label1.AutoSize = True
+        Label1.Font = New Font("Microsoft Sans Serif", 48F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.SteelBlue
+        Label1.Location = New Point(1360, 719)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(194, 73)
+        Label1.TabIndex = 5
+        Label1.Text = "00:00"
+        ' 
+        ' Timer1
+        ' 
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        Label2.AutoSize = True
+        Label2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.SteelBlue
+        Label2.Location = New Point(1356, 792)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(205, 20)
+        Label2.TabIndex = 6
+        Label2.Text = "Lunes, 15 de Junio de 2020"
         ' 
         ' frmMenu
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.Azure
-        ClientSize = New Size(800, 450)
-        Controls.Add(tlpMenu)
+        BackgroundImage = My.Resources.Resources.output_onlinepngtools__1_
+        BackgroundImageLayout = ImageLayout.Center
+        ClientSize = New Size(1566, 821)
+        Controls.Add(Label2)
+        Controls.Add(Label1)
+        Controls.Add(gbMenu)
+        DoubleBuffered = True
         Name = "frmMenu"
-        Text = "frmMenu"
-        tlpMenu.ResumeLayout(False)
-        tlpMenu.PerformLayout()
+        Text = "A"
         gbMenu.ResumeLayout(False)
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        gbMenu.PerformLayout()
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
-
-    Friend WithEvents tlpMenu As TableLayoutPanel
-    Friend WithEvents gbMenu As GroupBox
     Friend WithEvents bOperaciones As Button
     Friend WithEvents bPersonal As Button
     Friend WithEvents bServicios As Button
     Friend WithEvents bVentas As Button
     Friend WithEvents lblDescripcion As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents gbMenu As GroupBox
 End Class

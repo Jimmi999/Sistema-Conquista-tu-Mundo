@@ -27,31 +27,32 @@ Partial Class frmPrincipal
         pnlPpal = New Panel()
         niPpal = New NotifyIcon(components)
         pnlMnuDesp = New Panel()
+        pnlHerr = New Panel()
+        btnAyuda = New Button()
+        btnConfig = New Button()
+        btnHerr = New Button()
         pnlDatos = New Panel()
         btnUsuarios = New Button()
         btnOperaciones = New Button()
         btnServicios = New Button()
         btnVentas = New Button()
         btnDatos = New Button()
-        pnlHerr = New Panel()
-        btnConfig = New Button()
-        btnAyuda = New Button()
-        btnInicio = New Button()
-        btnHerr = New Button()
         pnlArchivo = New Panel()
         btnSalir = New Button()
-        btnCerrarLog = New Button()
+        btnSalirLog = New Button()
+        btnInicio = New Button()
         btnArchivo = New Button()
         pbMnuDesp = New PictureBox()
         btnMnuDesp = New Button()
         pnlMnuTool = New Panel()
+        btnVolver = New Button()
         tsslNomUsu = New Label()
         btnMini = New Button()
         btnMiniMax = New Button()
         btnExit = New Button()
         pnlMnuDesp.SuspendLayout()
-        pnlDatos.SuspendLayout()
         pnlHerr.SuspendLayout()
+        pnlDatos.SuspendLayout()
         pnlArchivo.SuspendLayout()
         CType(pbMnuDesp, ComponentModel.ISupportInitialize).BeginInit()
         pnlMnuTool.SuspendLayout()
@@ -77,18 +78,85 @@ Partial Class frmPrincipal
         pnlMnuDesp.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left
         pnlMnuDesp.AutoScroll = True
         pnlMnuDesp.BackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        pnlMnuDesp.Controls.Add(pnlDatos)
-        pnlMnuDesp.Controls.Add(btnDatos)
         pnlMnuDesp.Controls.Add(pnlHerr)
         pnlMnuDesp.Controls.Add(btnHerr)
+        pnlMnuDesp.Controls.Add(pnlDatos)
+        pnlMnuDesp.Controls.Add(btnDatos)
         pnlMnuDesp.Controls.Add(pnlArchivo)
         pnlMnuDesp.Controls.Add(btnArchivo)
         pnlMnuDesp.Controls.Add(pbMnuDesp)
         pnlMnuDesp.Location = New Point(0, 27)
         pnlMnuDesp.Name = "pnlMnuDesp"
-        pnlMnuDesp.Size = New Size(200, 556)
+        pnlMnuDesp.Size = New Size(279, 556)
         pnlMnuDesp.TabIndex = 3
         pnlMnuDesp.Visible = False
+        ' 
+        ' pnlHerr
+        ' 
+        pnlHerr.BackColor = Color.FromArgb(CByte(61), CByte(116), CByte(160))
+        pnlHerr.Controls.Add(btnAyuda)
+        pnlHerr.Controls.Add(btnConfig)
+        pnlHerr.Dock = DockStyle.Top
+        pnlHerr.Location = New Point(0, 477)
+        pnlHerr.Name = "pnlHerr"
+        pnlHerr.Size = New Size(279, 77)
+        pnlHerr.TabIndex = 9
+        pnlHerr.Visible = False
+        ' 
+        ' btnAyuda
+        ' 
+        btnAyuda.Dock = DockStyle.Top
+        btnAyuda.FlatAppearance.BorderSize = 0
+        btnAyuda.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
+        btnAyuda.FlatAppearance.MouseOverBackColor = Color.SteelBlue
+        btnAyuda.FlatStyle = FlatStyle.Flat
+        btnAyuda.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnAyuda.ForeColor = Color.White
+        btnAyuda.ImageAlign = ContentAlignment.MiddleLeft
+        btnAyuda.Location = New Point(0, 38)
+        btnAyuda.Name = "btnAyuda"
+        btnAyuda.Size = New Size(279, 38)
+        btnAyuda.TabIndex = 5
+        btnAyuda.Text = "Ayuda"
+        btnAyuda.TextAlign = ContentAlignment.MiddleLeft
+        btnAyuda.UseVisualStyleBackColor = True
+        ' 
+        ' btnConfig
+        ' 
+        btnConfig.Dock = DockStyle.Top
+        btnConfig.FlatAppearance.BorderSize = 0
+        btnConfig.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
+        btnConfig.FlatAppearance.MouseOverBackColor = Color.SteelBlue
+        btnConfig.FlatStyle = FlatStyle.Flat
+        btnConfig.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnConfig.ForeColor = Color.White
+        btnConfig.ImageAlign = ContentAlignment.MiddleLeft
+        btnConfig.Location = New Point(0, 0)
+        btnConfig.Name = "btnConfig"
+        btnConfig.Size = New Size(279, 38)
+        btnConfig.TabIndex = 4
+        btnConfig.Text = "Configuración"
+        btnConfig.TextAlign = ContentAlignment.MiddleLeft
+        btnConfig.UseVisualStyleBackColor = True
+        ' 
+        ' btnHerr
+        ' 
+        btnHerr.Dock = DockStyle.Top
+        btnHerr.FlatAppearance.BorderSize = 0
+        btnHerr.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
+        btnHerr.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(112), CByte(154))
+        btnHerr.FlatStyle = FlatStyle.Flat
+        btnHerr.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnHerr.ForeColor = Color.White
+        btnHerr.Image = My.Resources.Resources.icons8_herramientas_26
+        btnHerr.ImageAlign = ContentAlignment.MiddleLeft
+        btnHerr.Location = New Point(0, 439)
+        btnHerr.Name = "btnHerr"
+        btnHerr.Size = New Size(279, 38)
+        btnHerr.TabIndex = 8
+        btnHerr.Text = "        Herramientas"
+        btnHerr.TextAlign = ContentAlignment.MiddleLeft
+        btnHerr.UseVisualStyleBackColor = True
         ' 
         ' pnlDatos
         ' 
@@ -98,10 +166,10 @@ Partial Class frmPrincipal
         pnlDatos.Controls.Add(btnServicios)
         pnlDatos.Controls.Add(btnVentas)
         pnlDatos.Dock = DockStyle.Top
-        pnlDatos.Location = New Point(0, 400)
+        pnlDatos.Location = New Point(0, 287)
         pnlDatos.Name = "pnlDatos"
-        pnlDatos.Size = New Size(200, 152)
-        pnlDatos.TabIndex = 6
+        pnlDatos.Size = New Size(279, 152)
+        pnlDatos.TabIndex = 7
         pnlDatos.Visible = False
         ' 
         ' btnUsuarios
@@ -116,8 +184,8 @@ Partial Class frmPrincipal
         btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft
         btnUsuarios.Location = New Point(0, 114)
         btnUsuarios.Name = "btnUsuarios"
-        btnUsuarios.Size = New Size(200, 38)
-        btnUsuarios.TabIndex = 4
+        btnUsuarios.Size = New Size(279, 38)
+        btnUsuarios.TabIndex = 5
         btnUsuarios.Text = "Usuarios"
         btnUsuarios.TextAlign = ContentAlignment.MiddleLeft
         btnUsuarios.UseVisualStyleBackColor = True
@@ -134,8 +202,8 @@ Partial Class frmPrincipal
         btnOperaciones.ImageAlign = ContentAlignment.MiddleLeft
         btnOperaciones.Location = New Point(0, 76)
         btnOperaciones.Name = "btnOperaciones"
-        btnOperaciones.Size = New Size(200, 38)
-        btnOperaciones.TabIndex = 3
+        btnOperaciones.Size = New Size(279, 38)
+        btnOperaciones.TabIndex = 4
         btnOperaciones.Text = "Operaciones"
         btnOperaciones.TextAlign = ContentAlignment.MiddleLeft
         btnOperaciones.UseVisualStyleBackColor = True
@@ -152,8 +220,8 @@ Partial Class frmPrincipal
         btnServicios.ImageAlign = ContentAlignment.MiddleLeft
         btnServicios.Location = New Point(0, 38)
         btnServicios.Name = "btnServicios"
-        btnServicios.Size = New Size(200, 38)
-        btnServicios.TabIndex = 2
+        btnServicios.Size = New Size(279, 38)
+        btnServicios.TabIndex = 3
         btnServicios.Text = "Servicios"
         btnServicios.TextAlign = ContentAlignment.MiddleLeft
         btnServicios.UseVisualStyleBackColor = True
@@ -170,8 +238,8 @@ Partial Class frmPrincipal
         btnVentas.ImageAlign = ContentAlignment.MiddleLeft
         btnVentas.Location = New Point(0, 0)
         btnVentas.Name = "btnVentas"
-        btnVentas.Size = New Size(200, 38)
-        btnVentas.TabIndex = 1
+        btnVentas.Size = New Size(279, 38)
+        btnVentas.TabIndex = 2
         btnVentas.Text = "Ventas"
         btnVentas.TextAlign = ContentAlignment.MiddleLeft
         btnVentas.UseVisualStyleBackColor = True
@@ -187,62 +255,62 @@ Partial Class frmPrincipal
         btnDatos.ForeColor = Color.White
         btnDatos.Image = My.Resources.Resources.icons8_herramientas_26
         btnDatos.ImageAlign = ContentAlignment.MiddleLeft
-        btnDatos.Location = New Point(0, 362)
+        btnDatos.Location = New Point(0, 249)
         btnDatos.Name = "btnDatos"
-        btnDatos.Size = New Size(200, 38)
-        btnDatos.TabIndex = 5
+        btnDatos.Size = New Size(279, 38)
+        btnDatos.TabIndex = 6
         btnDatos.Text = "        Datos"
         btnDatos.TextAlign = ContentAlignment.MiddleLeft
         btnDatos.UseVisualStyleBackColor = True
         ' 
-        ' pnlHerr
+        ' pnlArchivo
         ' 
-        pnlHerr.BackColor = Color.FromArgb(CByte(61), CByte(116), CByte(160))
-        pnlHerr.Controls.Add(btnConfig)
-        pnlHerr.Controls.Add(btnAyuda)
-        pnlHerr.Controls.Add(btnInicio)
-        pnlHerr.Dock = DockStyle.Top
-        pnlHerr.Location = New Point(0, 246)
-        pnlHerr.Name = "pnlHerr"
-        pnlHerr.Size = New Size(200, 116)
-        pnlHerr.TabIndex = 4
-        pnlHerr.Visible = False
+        pnlArchivo.BackColor = Color.FromArgb(CByte(61), CByte(116), CByte(160))
+        pnlArchivo.Controls.Add(btnSalir)
+        pnlArchivo.Controls.Add(btnSalirLog)
+        pnlArchivo.Controls.Add(btnInicio)
+        pnlArchivo.Dock = DockStyle.Top
+        pnlArchivo.Location = New Point(0, 128)
+        pnlArchivo.Name = "pnlArchivo"
+        pnlArchivo.Size = New Size(279, 121)
+        pnlArchivo.TabIndex = 3
+        pnlArchivo.Visible = False
         ' 
-        ' btnConfig
+        ' btnSalir
         ' 
-        btnConfig.Dock = DockStyle.Top
-        btnConfig.FlatAppearance.BorderSize = 0
-        btnConfig.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        btnConfig.FlatAppearance.MouseOverBackColor = Color.SteelBlue
-        btnConfig.FlatStyle = FlatStyle.Flat
-        btnConfig.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnConfig.ForeColor = Color.White
-        btnConfig.ImageAlign = ContentAlignment.MiddleLeft
-        btnConfig.Location = New Point(0, 76)
-        btnConfig.Name = "btnConfig"
-        btnConfig.Size = New Size(200, 38)
-        btnConfig.TabIndex = 3
-        btnConfig.Text = "Configuración"
-        btnConfig.TextAlign = ContentAlignment.MiddleLeft
-        btnConfig.UseVisualStyleBackColor = True
+        btnSalir.Dock = DockStyle.Top
+        btnSalir.FlatAppearance.BorderSize = 0
+        btnSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
+        btnSalir.FlatAppearance.MouseOverBackColor = Color.SteelBlue
+        btnSalir.FlatStyle = FlatStyle.Flat
+        btnSalir.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSalir.ForeColor = Color.White
+        btnSalir.ImageAlign = ContentAlignment.MiddleLeft
+        btnSalir.Location = New Point(0, 80)
+        btnSalir.Name = "btnSalir"
+        btnSalir.Size = New Size(279, 38)
+        btnSalir.TabIndex = 5
+        btnSalir.Text = "Salir"
+        btnSalir.TextAlign = ContentAlignment.MiddleLeft
+        btnSalir.UseVisualStyleBackColor = True
         ' 
-        ' btnAyuda
+        ' btnSalirLog
         ' 
-        btnAyuda.Dock = DockStyle.Top
-        btnAyuda.FlatAppearance.BorderSize = 0
-        btnAyuda.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        btnAyuda.FlatAppearance.MouseOverBackColor = Color.SteelBlue
-        btnAyuda.FlatStyle = FlatStyle.Flat
-        btnAyuda.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnAyuda.ForeColor = Color.White
-        btnAyuda.ImageAlign = ContentAlignment.MiddleLeft
-        btnAyuda.Location = New Point(0, 38)
-        btnAyuda.Name = "btnAyuda"
-        btnAyuda.Size = New Size(200, 38)
-        btnAyuda.TabIndex = 2
-        btnAyuda.Text = "Ayuda"
-        btnAyuda.TextAlign = ContentAlignment.MiddleLeft
-        btnAyuda.UseVisualStyleBackColor = True
+        btnSalirLog.Dock = DockStyle.Top
+        btnSalirLog.FlatAppearance.BorderSize = 0
+        btnSalirLog.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
+        btnSalirLog.FlatAppearance.MouseOverBackColor = Color.SteelBlue
+        btnSalirLog.FlatStyle = FlatStyle.Flat
+        btnSalirLog.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSalirLog.ForeColor = Color.White
+        btnSalirLog.ImageAlign = ContentAlignment.MiddleLeft
+        btnSalirLog.Location = New Point(0, 38)
+        btnSalirLog.Name = "btnSalirLog"
+        btnSalirLog.Size = New Size(279, 42)
+        btnSalirLog.TabIndex = 4
+        btnSalirLog.Text = "Cerrar Sesión"
+        btnSalirLog.TextAlign = ContentAlignment.MiddleLeft
+        btnSalirLog.UseVisualStyleBackColor = True
         ' 
         ' btnInicio
         ' 
@@ -256,78 +324,11 @@ Partial Class frmPrincipal
         btnInicio.ImageAlign = ContentAlignment.MiddleLeft
         btnInicio.Location = New Point(0, 0)
         btnInicio.Name = "btnInicio"
-        btnInicio.Size = New Size(200, 38)
-        btnInicio.TabIndex = 1
+        btnInicio.Size = New Size(279, 38)
+        btnInicio.TabIndex = 2
         btnInicio.Text = "Inicio"
         btnInicio.TextAlign = ContentAlignment.MiddleLeft
         btnInicio.UseVisualStyleBackColor = True
-        ' 
-        ' btnHerr
-        ' 
-        btnHerr.Dock = DockStyle.Top
-        btnHerr.FlatAppearance.BorderSize = 0
-        btnHerr.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        btnHerr.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(58), CByte(112), CByte(154))
-        btnHerr.FlatStyle = FlatStyle.Flat
-        btnHerr.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnHerr.ForeColor = Color.White
-        btnHerr.Image = My.Resources.Resources.icons8_herramientas_26
-        btnHerr.ImageAlign = ContentAlignment.MiddleLeft
-        btnHerr.Location = New Point(0, 208)
-        btnHerr.Name = "btnHerr"
-        btnHerr.Size = New Size(200, 38)
-        btnHerr.TabIndex = 3
-        btnHerr.Text = "        Herramientas"
-        btnHerr.TextAlign = ContentAlignment.MiddleLeft
-        btnHerr.UseVisualStyleBackColor = True
-        ' 
-        ' pnlArchivo
-        ' 
-        pnlArchivo.BackColor = Color.FromArgb(CByte(61), CByte(116), CByte(160))
-        pnlArchivo.Controls.Add(btnSalir)
-        pnlArchivo.Controls.Add(btnCerrarLog)
-        pnlArchivo.Dock = DockStyle.Top
-        pnlArchivo.Location = New Point(0, 128)
-        pnlArchivo.Name = "pnlArchivo"
-        pnlArchivo.Size = New Size(200, 80)
-        pnlArchivo.TabIndex = 0
-        pnlArchivo.Visible = False
-        ' 
-        ' btnSalir
-        ' 
-        btnSalir.Dock = DockStyle.Top
-        btnSalir.FlatAppearance.BorderSize = 0
-        btnSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        btnSalir.FlatAppearance.MouseOverBackColor = Color.SteelBlue
-        btnSalir.FlatStyle = FlatStyle.Flat
-        btnSalir.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnSalir.ForeColor = Color.White
-        btnSalir.ImageAlign = ContentAlignment.MiddleLeft
-        btnSalir.Location = New Point(0, 38)
-        btnSalir.Name = "btnSalir"
-        btnSalir.Size = New Size(200, 42)
-        btnSalir.TabIndex = 3
-        btnSalir.Text = "Salir"
-        btnSalir.TextAlign = ContentAlignment.MiddleLeft
-        btnSalir.UseVisualStyleBackColor = True
-        ' 
-        ' btnCerrarLog
-        ' 
-        btnCerrarLog.Dock = DockStyle.Top
-        btnCerrarLog.FlatAppearance.BorderSize = 0
-        btnCerrarLog.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        btnCerrarLog.FlatAppearance.MouseOverBackColor = Color.SteelBlue
-        btnCerrarLog.FlatStyle = FlatStyle.Flat
-        btnCerrarLog.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnCerrarLog.ForeColor = Color.White
-        btnCerrarLog.ImageAlign = ContentAlignment.MiddleLeft
-        btnCerrarLog.Location = New Point(0, 0)
-        btnCerrarLog.Name = "btnCerrarLog"
-        btnCerrarLog.Size = New Size(200, 38)
-        btnCerrarLog.TabIndex = 2
-        btnCerrarLog.Text = "Cerrar Sesión"
-        btnCerrarLog.TextAlign = ContentAlignment.MiddleLeft
-        btnCerrarLog.UseVisualStyleBackColor = True
         ' 
         ' btnArchivo
         ' 
@@ -343,8 +344,8 @@ Partial Class frmPrincipal
         btnArchivo.ImageAlign = ContentAlignment.MiddleLeft
         btnArchivo.Location = New Point(0, 93)
         btnArchivo.Name = "btnArchivo"
-        btnArchivo.Size = New Size(200, 35)
-        btnArchivo.TabIndex = 0
+        btnArchivo.Size = New Size(279, 35)
+        btnArchivo.TabIndex = 2
         btnArchivo.Text = "         Archivo"
         btnArchivo.TextAlign = ContentAlignment.MiddleLeft
         btnArchivo.UseVisualStyleBackColor = False
@@ -355,9 +356,9 @@ Partial Class frmPrincipal
         pbMnuDesp.Image = My.Resources.Resources.output_onlinepngtools__1_3
         pbMnuDesp.Location = New Point(0, 0)
         pbMnuDesp.Name = "pbMnuDesp"
-        pbMnuDesp.Size = New Size(200, 93)
+        pbMnuDesp.Size = New Size(279, 93)
         pbMnuDesp.SizeMode = PictureBoxSizeMode.CenterImage
-        pbMnuDesp.TabIndex = 0
+        pbMnuDesp.TabIndex = 1
         pbMnuDesp.TabStop = False
         ' 
         ' btnMnuDesp
@@ -377,6 +378,7 @@ Partial Class frmPrincipal
         ' 
         pnlMnuTool.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         pnlMnuTool.BackColor = Color.SteelBlue
+        pnlMnuTool.Controls.Add(btnVolver)
         pnlMnuTool.Controls.Add(tsslNomUsu)
         pnlMnuTool.Controls.Add(btnMini)
         pnlMnuTool.Controls.Add(btnMiniMax)
@@ -386,6 +388,27 @@ Partial Class frmPrincipal
         pnlMnuTool.Name = "pnlMnuTool"
         pnlMnuTool.Size = New Size(992, 31)
         pnlMnuTool.TabIndex = 4
+        ' 
+        ' btnVolver
+        ' 
+        btnVolver.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        btnVolver.BackColor = Color.SteelBlue
+        btnVolver.FlatAppearance.BorderColor = Color.MediumTurquoise
+        btnVolver.FlatAppearance.BorderSize = 0
+        btnVolver.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnVolver.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnVolver.FlatStyle = FlatStyle.Flat
+        btnVolver.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnVolver.ForeColor = Color.White
+        btnVolver.Image = My.Resources.Resources.icons8_atrás_24
+        btnVolver.ImageAlign = ContentAlignment.MiddleLeft
+        btnVolver.Location = New Point(781, 1)
+        btnVolver.Name = "btnVolver"
+        btnVolver.Size = New Size(94, 31)
+        btnVolver.TabIndex = 6
+        btnVolver.Text = "    Volver"
+        btnVolver.UseVisualStyleBackColor = False
+        btnVolver.Visible = False
         ' 
         ' tsslNomUsu
         ' 
@@ -450,10 +473,9 @@ Partial Class frmPrincipal
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmPrincipal"
         Text = "Conquista Tu Mundo"
-        WindowState = FormWindowState.Maximized
         pnlMnuDesp.ResumeLayout(False)
-        pnlDatos.ResumeLayout(False)
         pnlHerr.ResumeLayout(False)
+        pnlDatos.ResumeLayout(False)
         pnlArchivo.ResumeLayout(False)
         CType(pbMnuDesp, ComponentModel.ISupportInitialize).EndInit()
         pnlMnuTool.ResumeLayout(False)
@@ -475,26 +497,27 @@ Partial Class frmPrincipal
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents pnlMnuDesp As Panel
     Friend WithEvents btnMnuDesp As Button
-    Friend WithEvents btnArchivo As Button
-    Friend WithEvents pnlArchivo As Panel
-    Friend WithEvents btnSalir As Button
-    Friend WithEvents btnCerrarLog As Button
     Friend WithEvents btnIniciar As Button
-    Friend WithEvents btnHerr As Button
-    Friend WithEvents pnlHerr As Panel
-    Friend WithEvents btnConfig As Button
-    Friend WithEvents btnAyuda As Button
-    Friend WithEvents btnInicio As Button
     Friend WithEvents pnlMnuTool As Panel
     Friend WithEvents btnMini As Button
     Friend WithEvents btnMiniMax As Button
     Friend WithEvents btnExit As Button
     Friend WithEvents tsslNomUsu As Label
-    Friend WithEvents pbMnuDesp As PictureBox
-    Friend WithEvents btnDatos As Button
+    Friend WithEvents pnlHerr As Panel
+    Friend WithEvents btnAyuda As Button
+    Friend WithEvents btnConfig As Button
+    Friend WithEvents btnHerr As Button
     Friend WithEvents pnlDatos As Panel
+    Friend WithEvents btnUsuarios As Button
     Friend WithEvents btnOperaciones As Button
     Friend WithEvents btnServicios As Button
     Friend WithEvents btnVentas As Button
-    Friend WithEvents btnUsuarios As Button
+    Friend WithEvents btnDatos As Button
+    Friend WithEvents pnlArchivo As Panel
+    Friend WithEvents btnSalir As Button
+    Friend WithEvents btnSalirLog As Button
+    Friend WithEvents btnInicio As Button
+    Friend WithEvents btnArchivo As Button
+    Friend WithEvents pbMnuDesp As PictureBox
+    Friend WithEvents btnVolver As Button
 End Class

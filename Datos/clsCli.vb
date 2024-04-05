@@ -41,6 +41,7 @@ Public Class clsCli
             cmd.Parameters.AddWithValue("@CodPais", usu)
 
 
+
             'Agregamos la cadena de conexion
             cmd.Connection = con
             'Establecemos el tiempo maximo de espera a respuesta de sql

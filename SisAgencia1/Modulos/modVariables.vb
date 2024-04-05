@@ -28,6 +28,27 @@ Module modVariables
 
     End Sub
 
+
+
+    Public UltimosFormularios As New List(Of String)
+
+    ' Método para actualizar la lista de últimos formularios visitados
+    Public Sub ActualizarUltimosFormularios(nombreFormulario As String)
+        If UltimosFormularios.Contains(nombreFormulario) Then
+            UltimosFormularios.Remove(nombreFormulario)
+        End If
+
+        UltimosFormularios.Insert(0, nombreFormulario)
+
+        ' Mantener solo los últimos 4 formularios visitados
+        If UltimosFormularios.Count > 4 Then
+            UltimosFormularios.RemoveAt(UltimosFormularios.Count - 1)
+        End If
+
+        ' Actualizar los botones en el panel
+
+    End Sub
+
     Public Sub AbrirFormPanel(f As Form, p As Panel)
         'Limpio los controles existentes en el panel
         'p.Controls.Clear()

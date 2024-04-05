@@ -12,12 +12,14 @@ Public Class frmVenCli
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCliV.Click
         AbrirFormPanel(frmClientes, pnlVenCli)
         frmClientes.rbCliAct.Checked = True
+        ActualizarUltimosFormularios("frmClientes")
         'FormularioAbierto(frmDetVent, Button1)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnVenV.Click
         AbrirFormPanel(frmvender, pnlVenCli)
         FormularioAbierto(frmClientes, btnVenV)
+        ActualizarUltimosFormularios("frmVentas")
     End Sub
 
 
@@ -59,6 +61,9 @@ Public Class frmVenCli
         ' Opcional: Deshabilitar el ajuste automático del tamaño de la última columna
 
     End Sub
+
+
+
 
 
 End Class
