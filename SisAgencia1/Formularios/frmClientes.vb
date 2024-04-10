@@ -295,10 +295,10 @@ Public Class frmClientes
                 ClienteDatos.Telefono = txtTel.Text
                 ClienteDatos.IdAlta = CodUsu
 
-                If CodCli = 0 Then
-                    MensajeError("Ocurrio un error al intentar guardar los cambios (ID 0)")
-                Else
-                    If bandera = True Then
+                'If CodCli = 0 Then
+                '    MensajeError("Ocurrio un error al intentar guardar los cambios (ID 0)")
+                'Else
+                If bandera = True Then
                         If ClientesSP.InsCli(ClienteDatos) Then
                             MensajeError("Cliente grabado exitosamente.")
                             frmVenCli.btnCliV.BackColor = Color.SteelBlue
@@ -321,7 +321,7 @@ Public Class frmClientes
                         End If
                     End If
                     btnAgrCom.Visible = False
-                End If
+                'End If
 
             ElseIf banbl = False Then
                 MensajeError("Hay uno o mas campos vacios")
@@ -415,7 +415,5 @@ Public Class frmClientes
         frmPrincipal.Enabled = True
     End Sub
 
-    Private Sub btnAgrCom_Click_1(sender As Object, e As EventArgs) Handles btnAgrCom.Click
 
-    End Sub
 End Class

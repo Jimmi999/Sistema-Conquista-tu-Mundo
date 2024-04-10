@@ -25,8 +25,6 @@ Partial Class frmClientes
         components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmClientes))
         gbCliente = New GroupBox()
-        btnAgrCom = New Button()
-        BtnAgrTel = New Button()
         Label1 = New Label()
         Label2 = New Label()
         txtTel = New TextBox()
@@ -55,6 +53,8 @@ Partial Class frmClientes
         tbsCancelar = New ToolStripButton()
         tbsSalir = New ToolStripButton()
         tsClientes = New ToolStrip()
+        btnAgrCom = New Button()
+        BtnAgrTel = New Button()
         gbCliente.SuspendLayout()
         gbDGVCliente.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -86,43 +86,6 @@ Partial Class frmClientes
         gbCliente.TabIndex = 14
         gbCliente.TabStop = False
         gbCliente.Text = "Datos Cliente"
-        ' 
-        ' btnAgrCom
-        ' 
-        btnAgrCom.BackColor = Color.SteelBlue
-        btnAgrCom.FlatAppearance.BorderColor = Color.SlateGray
-        btnAgrCom.FlatAppearance.MouseDownBackColor = Color.SteelBlue
-        btnAgrCom.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
-        btnAgrCom.FlatStyle = FlatStyle.Flat
-        btnAgrCom.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnAgrCom.ForeColor = Color.WhiteSmoke
-        btnAgrCom.Image = My.Resources.Resources.icons8_carrito_de_compras_24
-        btnAgrCom.ImageAlign = ContentAlignment.MiddleLeft
-        btnAgrCom.Location = New Point(434, 89)
-        btnAgrCom.Name = "btnAgrCom"
-        btnAgrCom.Size = New Size(254, 44)
-        btnAgrCom.TabIndex = 35
-        btnAgrCom.Text = "Vender"
-        btnAgrCom.UseVisualStyleBackColor = False
-        ' 
-        ' BtnAgrTel
-        ' 
-        BtnAgrTel.BackColor = Color.SteelBlue
-        BtnAgrTel.FlatAppearance.BorderColor = Color.SlateGray
-        BtnAgrTel.FlatAppearance.MouseDownBackColor = Color.SteelBlue
-        BtnAgrTel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
-        BtnAgrTel.FlatStyle = FlatStyle.Flat
-        BtnAgrTel.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        BtnAgrTel.ForeColor = Color.White
-        BtnAgrTel.Image = My.Resources.Resources.icons8_teléfono_25
-        BtnAgrTel.ImageAlign = ContentAlignment.MiddleLeft
-        BtnAgrTel.Location = New Point(434, 52)
-        BtnAgrTel.Name = "BtnAgrTel"
-        BtnAgrTel.Size = New Size(254, 30)
-        BtnAgrTel.TabIndex = 34
-        BtnAgrTel.Text = "Agregar/Modificar"
-        BtnAgrTel.UseVisualStyleBackColor = False
-        BtnAgrTel.Visible = False
         ' 
         ' Label1
         ' 
@@ -395,6 +358,43 @@ Partial Class frmClientes
         tsClientes.TabIndex = 13
         tsClientes.Text = "ToolStrip1"
         ' 
+        ' btnAgrCom
+        ' 
+        btnAgrCom.BackColor = Color.SteelBlue
+        btnAgrCom.FlatAppearance.BorderColor = Color.SlateGray
+        btnAgrCom.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnAgrCom.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnAgrCom.FlatStyle = FlatStyle.Flat
+        btnAgrCom.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnAgrCom.ForeColor = Color.WhiteSmoke
+        btnAgrCom.Image = My.Resources.Resources.icons8_carrito_de_compras_24
+        btnAgrCom.ImageAlign = ContentAlignment.MiddleLeft
+        btnAgrCom.Location = New Point(434, 89)
+        btnAgrCom.Name = "btnAgrCom"
+        btnAgrCom.Size = New Size(254, 44)
+        btnAgrCom.TabIndex = 35
+        btnAgrCom.Text = "Vender"
+        btnAgrCom.UseVisualStyleBackColor = False
+        ' 
+        ' BtnAgrTel
+        ' 
+        BtnAgrTel.BackColor = Color.SteelBlue
+        BtnAgrTel.FlatAppearance.BorderColor = Color.SlateGray
+        BtnAgrTel.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        BtnAgrTel.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        BtnAgrTel.FlatStyle = FlatStyle.Flat
+        BtnAgrTel.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        BtnAgrTel.ForeColor = Color.White
+        BtnAgrTel.Image = My.Resources.Resources.icons8_teléfono_25
+        BtnAgrTel.ImageAlign = ContentAlignment.MiddleLeft
+        BtnAgrTel.Location = New Point(434, 52)
+        BtnAgrTel.Name = "BtnAgrTel"
+        BtnAgrTel.Size = New Size(254, 30)
+        BtnAgrTel.TabIndex = 34
+        BtnAgrTel.Text = "Agregar/Modificar"
+        BtnAgrTel.UseVisualStyleBackColor = False
+        BtnAgrTel.Visible = False
+        ' 
         ' frmClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -437,11 +437,9 @@ Partial Class frmClientes
     Friend WithEvents Label2 As Label
     Friend WithEvents txtTel As TextBox
     Friend WithEvents txtMail As TextBox
-    Friend WithEvents BtnAgrTel As Button
     Friend WithEvents ep As ErrorProvider
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents txtBusCli As TextBox
-    Friend WithEvents btnAgrCom As Button
     Friend WithEvents tsClientes As ToolStrip
     Friend WithEvents tbsNuevo As ToolStripButton
     Friend WithEvents tbsGuardar As ToolStripButton
@@ -451,4 +449,6 @@ Partial Class frmClientes
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents tbsCancelar As ToolStripButton
     Friend WithEvents tbsSalir As ToolStripButton
+    Friend WithEvents btnAgrCom As Button
+    Friend WithEvents BtnAgrTel As Button
 End Class

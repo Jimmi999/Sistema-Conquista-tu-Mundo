@@ -50,7 +50,6 @@ Partial Class frmVenCli
         ' btnVenV
         ' 
         btnVenV.BackColor = Color.SteelBlue
-        btnVenV.Enabled = False
         btnVenV.FlatAppearance.BorderColor = Color.MediumTurquoise
         btnVenV.FlatAppearance.BorderSize = 0
         btnVenV.FlatAppearance.MouseDownBackColor = Color.SteelBlue

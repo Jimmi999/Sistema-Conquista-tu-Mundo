@@ -5,27 +5,26 @@ Imports Entidades
 
 
 
-Public Class frmEmp
+Public Class frmBase
 #Region "Variables"
-    Public CodEmp As Integer = 0
-    Dim EmpleadosSP As New clsEmp
+    Public CodCli As Integer = 0
     Dim ClientesSP As New clsCli
-    Dim EmpleadosDatos As New eEmp
+    Dim ClienteDatos As New eCli
     Dim bandera As Boolean
 #End Region
 #Region "Funciones"
 
     Private Sub EstablecerOrdenColumnasAct()
-        If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then
+        If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
             ' Definir el orden deseado de las columnas
-            Dim ordenColumnas As New List(Of String) From {"Número de empleado", "DNI", "Apellido", "Nombre", "País", "Domicilio", "Teléfono", "Correo", "Fecha de creación"}
+            Dim ordenColumnas As New List(Of String) From {"Número de cliente", "DNI", "Apellido", "Nombre", "País", "Correo", "Teléfonos", "Fecha de creación"}
 
             ' Verificar si el DataGridView contiene las columnas antes de intentar establecer su orden
             For Each nombreColumna As String In ordenColumnas
-                If dgvEmpleados.Columns.Contains(nombreColumna) Then
-                    Dim columnIndex As Integer = dgvEmpleados.Columns(nombreColumna).Index
-                    If columnIndex < dgvEmpleados.Columns.Count Then
-                        dgvEmpleados.Columns(nombreColumna).DisplayIndex = ordenColumnas.IndexOf(nombreColumna)
+                If dgvClientes.Columns.Contains(nombreColumna) Then
+                    Dim columnIndex As Integer = dgvClientes.Columns(nombreColumna).Index
+                    If columnIndex < dgvClientes.Columns.Count Then
+                        dgvClientes.Columns(nombreColumna).DisplayIndex = ordenColumnas.IndexOf(nombreColumna)
                     End If
                 End If
             Next
@@ -69,11 +68,11 @@ Public Class frmEmp
 
 
     Private Sub GetCliAct()
-        dgvEmpleados.DataSource = EmpleadosSP.GetEmpleados()
+        dgvClientes.DataSource = ClientesSP.GetClientes()
     End Sub
 
     Private Sub GetCliCan()
-        dgvEmpleados.DataSource = EmpleadosSP.GetEmpleadosCancel()
+        dgvClientes.DataSource = ClientesSP.GetClientesCancel()
     End Sub
 
     Private Sub CargaCmbPais()
@@ -83,7 +82,6 @@ Public Class frmEmp
     End Sub
 
     Private Sub Desactivar()
-        txtDom.Enabled = False
         txtDNI.Enabled = False
         txtNom.Enabled = False
         txtApe.Enabled = False
@@ -95,21 +93,21 @@ Public Class frmEmp
 
 
     Public Sub Determinar()
-        If rbEmpAct.Checked = True Then
+        If rbCliAct.Checked = True Then
             GetCliAct()
-            'If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then------------------------------------------------------------------------------------
-            '    If dgvClientes.Columns.Contains("Usuario") Then
-            '        dgvClientes.Columns("Usuario").Visible = True
-            '    End If
-            'End If
+            If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
+                If dgvClientes.Columns.Contains("Teléfonos") Then
+                    dgvClientes.Columns("Teléfonos").Visible = True
+                End If
+            End If
 
         Else
             GetCliCan()
-            'If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
-            '    If dgvClientes.Columns.Contains("Teléfonos") Then
-            '        dgvClientes.Columns("Teléfonos").Visible = False
-            '    End If
-            'End If
+            If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
+                If dgvClientes.Columns.Contains("Teléfonos") Then
+                    dgvClientes.Columns("Teléfonos").Visible = False
+                End If
+            End If
 
         End If
 
@@ -120,8 +118,8 @@ Public Class frmEmp
         bandera = True
         txtDNI.Focus()
 
-        'frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155)-------------------------------
-        txtDom.Enabled = True
+        frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155)
+
         txtDNI.Enabled = True
         txtNom.Enabled = True
         txtApe.Enabled = True
@@ -129,12 +127,12 @@ Public Class frmEmp
         txtMail.Enabled = True
         txtTel.Enabled = True
         txtTel.Visible = True
-
+        btnAgrTel.Visible = False
         btnGuaMod.Visible = True
         btnGuaMod.Enabled = True
         btnGuaMod.Text = "Guardar"
         btnResEli.Enabled = False
-        btnCreUsu.Enabled = False
+        btnAgrCom.Enabled = False
         btnNuevo.Text = "Cancelar"
         btnNuevo.ForeColor = Color.Firebrick
         btnNuevo.Image = My.Resources.icons8_cancelar_rojo_30
@@ -143,7 +141,6 @@ Public Class frmEmp
         DisabledColor()
         ClearText(txtDNI)
         ClearText(txtNom)
-        ClearText(txtDom)
         ClearText(txtApe)
         ClearText(txtMail)
         ClearText(txtTel) 'crear comando limpiar para ahorrar xd
@@ -158,9 +155,9 @@ Public Class frmEmp
         btnResEli.Enabled = False
         btnGuaMod.Enabled = False
         btnGuaMod.Text = "Guardar"
-        btnCreUsu.Visible = False
-        btnCreUsu.Enabled = False
-        txtDom.Enabled = False
+        btnAgrCom.Visible = False
+        btnAgrCom.Enabled = False
+        btnAgrTel.Visible = False
         txtDNI.Enabled = False
         txtNom.Enabled = False
         txtApe.Enabled = False
@@ -171,7 +168,6 @@ Public Class frmEmp
         ClearText(txtDNI)
         ClearText(txtNom)
         ClearText(txtApe)
-        ClearText(txtDom)
         ClearText(txtMail)
         ClearText(txtTel)
         cmbPais.Text = ""
@@ -183,10 +179,10 @@ Public Class frmEmp
         'btnNuevo.Height = 34
         'btnNuevo.Width = 95
         'btnNuevo.Location = New Point(159, 298)
-        CodEmp = 0
-        'frmVenCli.btnCliV.BackColor = Color.SteelBlue---------------------------------------------
-        txtBusEmp.Text = "Buscar"
-        txtBusEmp.ForeColor = Color.Gray
+        CodCli = 0
+        frmVenCli.btnCliV.BackColor = Color.SteelBlue
+        txtBusCli.Text = "Buscar"
+        txtBusCli.ForeColor = Color.Gray
         Determinar()
 
 
@@ -194,23 +190,23 @@ Public Class frmEmp
 
     Private Sub Cargar()
 
-        If txtBusEmp.Text.Length = 0 Or txtBusEmp.ForeColor = Color.Gray Then
+        If txtBusCli.Text.Length = 0 Or txtBusCli.ForeColor = Color.Gray Then
             Determinar()
         Else
-            If rbEmpAct.Checked Then
-                Me.dgvEmpleados.DataSource = EmpleadosSP.BuscarEmpleados(txtBusEmp.Text)
-                'If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
-                '    If dgvClientes.Columns.Contains("Teléfonos") Then
-                '        dgvClientes.Columns("Teléfonos").Visible = True
-                '    End If
-                'End If
+            If rbCliAct.Checked Then
+                Me.dgvClientes.DataSource = ClientesSP.BuscarCliente(txtBusCli.Text)
+                If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
+                    If dgvClientes.Columns.Contains("Teléfonos") Then
+                        dgvClientes.Columns("Teléfonos").Visible = True
+                    End If
+                End If
             Else
-                Me.dgvEmpleados.DataSource = EmpleadosSP.BuscarEmpleadoBaja(txtBusEmp.Text)
-                'If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
-                '    If dgvClientes.Columns.Contains("Teléfonos") Then
-                '        dgvClientes.Columns("Teléfonos").Visible = False
-                '    End If
-                'End If
+                Me.dgvClientes.DataSource = ClientesSP.BuscarClienteBaja(txtBusCli.Text)
+                If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
+                    If dgvClientes.Columns.Contains("Teléfonos") Then
+                        dgvClientes.Columns("Teléfonos").Visible = False
+                    End If
+                End If
             End If
         End If
 
@@ -220,24 +216,24 @@ Public Class frmEmp
 
 #End Region
 #Region "Eventos"
-    Private Sub frmEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        dgvEmpleados.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9)
-        dgvEmpleados.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 12)
-        rbEmpAct.Checked = True
+        dgvClientes.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9)
+        dgvClientes.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 12)
+
         GetCliAct()
         CargaCmbPais()
         HabilitarNo()
         Cargar()
 
         Me.MaximumSize = Screen.FromControl(Me).WorkingArea.Size
-        Me.dgvEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
-        Me.dgvEmpleados.RowHeadersWidth = 15
+        Me.dgvClientes.RowHeadersWidth = 15
 
     End Sub
 
-    Private Sub rbCliAct_CheckedChanged(sender As Object, e As EventArgs) Handles rbEmpAct.CheckedChanged
+    Private Sub rbCliAct_CheckedChanged(sender As Object, e As EventArgs) Handles rbCliAct.CheckedChanged
         Determinar()
         Cargar()
 
@@ -263,57 +259,56 @@ Public Class frmEmp
         'txtTel.Visible = True
     End Sub
 
-    Private Sub dgvClientes_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvEmpleados.CellDoubleClick
+    Private Sub dgvClientes_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvClientes.CellDoubleClick
 
 
 
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then ' Verifica si se hizo clic en una celda válida
-            If dgvEmpleados.SelectedCells.Count > 0 Then ' Verifica si hay celdas seleccionadas
+            If dgvClientes.SelectedCells.Count > 0 Then ' Verifica si hay celdas seleccionadas
                 HabilitarNuevo()
                 bandera = False 'si es mod es false
-                btnCreUsu.Enabled = True
+                btnAgrCom.Enabled = True
+                txtTel.Enabled = False
 
 
+                btnAgrCom.Visible = True
 
-                btnCreUsu.Visible = True
-
-                If rbEmpCan.Checked Then
+                If rbCliCan.Checked Then
                     'tbsEliminar.Enabled = False---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                     ' tbsRestaurar.Enabled = True
                     Desactivar()
                     RestaurarColor()
-                    btnCreUsu.Visible = False
-
+                    btnAgrCom.Visible = False
+                    btnAgrTel.Visible = False
                     txtTel.Visible = True
                 Else
                     btnGuaMod.Text = "Modificar"
-                    btnCreUsu.Visible = True
+                    btnAgrCom.Visible = True
                     ' tbsEliminar.Enabled = True
                     EliminarColor()
-                    txtTel.Visible = True
-
+                    txtTel.Visible = False
+                    btnAgrTel.Visible = True
                 End If
 
 
 
-                If e.RowIndex >= 0 AndAlso e.RowIndex < dgvEmpleados.Rows.Count Then
-                    Dim row As DataGridViewRow = dgvEmpleados.Rows(e.RowIndex)
+                If e.RowIndex >= 0 AndAlso e.RowIndex < dgvClientes.Rows.Count Then
+                    Dim row As DataGridViewRow = dgvClientes.Rows(e.RowIndex)
                     If Not row.Cells.Cast(Of DataGridViewCell)().Any(Function(cell) cell.Value IsNot Nothing AndAlso Not cell.Value.Equals(DBNull.Value)) Then
                         ' Verifica si todas las celdas de la fila no son nulas
                         HabilitarNo()
                     Else
-                        CodEmp = CInt(row.Cells(0)?.Value) ' Actualiza el código del cliente seleccionado
+                        CodCli = CInt(row.Cells(0)?.Value) ' Actualiza el código del cliente seleccionado
                         txtDNI.Text = row.Cells(1)?.Value?.ToString()
                         dnibus = row.Cells(1)?.Value?.ToString()
                         txtNom.Text = row.Cells(3)?.Value?.ToString()
                         NomCli = row.Cells(3)?.Value?.ToString()
                         txtApe.Text = row.Cells(2)?.Value?.ToString()
                         ApeCli = row.Cells(2)?.Value?.ToString()
-                        cmbPais.SelectedValue = row.Cells(9)?.Value?.ToString() ' Suponiendo que la columna 8 contiene el código del país
-                        txtMail.Text = row.Cells(7)?.Value?.ToString()
-                        txtDom.Text = row.Cells(5)?.Value?.ToString()
-                        'frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155)----------------------------------------------------------------------------------------------------------------------------------------------
-                        txtTel.Text = row.Cells(6)?.Value?.ToString()
+                        cmbPais.SelectedValue = row.Cells(8)?.Value?.ToString() ' Suponiendo que la columna 8 contiene el código del país
+                        txtMail.Text = row.Cells(5)?.Value?.ToString()
+                        frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155)
+                        'txtTel.Text = row.Cells(6)?.Value?.ToString()
                         'dtpFecNac.Value = If(row.Cells(6)?.Value IsNot Nothing, Convert.ToDateTime(row.Cells(6).Value), DateTime.MinValue)
                     End If
                 End If
@@ -324,7 +319,7 @@ Public Class frmEmp
 
     End Sub
 
-    Private Sub rbCliCan_CheckedChanged(sender As Object, e As EventArgs) Handles rbEmpCan.CheckedChanged
+    Private Sub rbCliCan_CheckedChanged(sender As Object, e As EventArgs) Handles rbCliCan.CheckedChanged
         Determinar()
         Cargar()
 
@@ -332,9 +327,9 @@ Public Class frmEmp
 
 
 
-    Private Sub dgvClientes_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvEmpleados.DataBindingComplete
-        If dgvEmpleados.Columns.Count > 0 Then
-            dgvEmpleados.Columns(dgvEmpleados.Columns.Count - 1).Visible = False
+    Private Sub dgvClientes_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvClientes.DataBindingComplete
+        If dgvClientes.Columns.Count > 0 Then
+            dgvClientes.Columns(dgvClientes.Columns.Count - 1).Visible = False
         End If
     End Sub
 
@@ -356,27 +351,27 @@ Public Class frmEmp
 
     Private Sub btnResEli_Click(sender As Object, e As EventArgs) Handles btnResEli.Click
         If btnResEli.Text = "Eliminar" Then
-            Dim resultado As DialogResult = MessageBox.Show("Esta por dar de baja un empleado ¿Desea continuar?", "Eliminar empleado " & txtApe.Text & "," & txtNom.Text, MessageBoxButtons.YesNo)
+            Dim resultado As DialogResult = MessageBox.Show("Esta por dar de baja un cliente, ¿Desea continuar?", "Eliminar cliente " & txtApe.Text & "," & txtNom.Text, MessageBoxButtons.YesNo)
             If resultado = DialogResult.Yes Then
-                If EmpleadosSP.BajaEmpleados(CodEmp, CodUsu) Then
+                If ClientesSP.BajaClientes(CodCli, CodUsu) Then
                     HabilitarNo()
                     Determinar()
-
-                    'frmVenCli.btnCliV.BackColor = Color.SteelBlue - ---------------------------------------------------------
+                    btnAgrCom.Visible = False
+                    frmVenCli.btnCliV.BackColor = Color.SteelBlue
                 Else
-                    MensajeError("Hubo un error al intentar dar de baja al empleado " & txtApe.Text)
+                    MensajeError("Hubo un error al intentar dar de baja al cliente " & txtApe.Text)
                 End If
             End If
         ElseIf btnResEli.Text = "Restaurar" Then
             'CampoBlanco2(Me.pnlDatCli, ep)
             'If banbl = True Then
-            If EmpleadosSP.RecEmpleados(CodEmp) Then
-                HabilitarNo()
-                Determinar()
-                'frmVenCli.btnCliV.BackColor = Color.SteelBlue----------------------------------------------------------------------
-            Else
-                MensajeError("Hubo un error al intentar recuperar el empleado " & txtApe.Text)
-            End If
+            If ClientesSP.RecClientes(CodCli) Then
+                    HabilitarNo()
+                    Determinar()
+                    frmVenCli.btnCliV.BackColor = Color.SteelBlue
+                Else
+                    MensajeError("Hubo un error al intentar recuperar el cliente " & txtApe.Text)
+                End If
             'ElseIf banbl = False Then
             '    MensajeError("Hay uno o mas campos vacios")
             '    ep.Clear()
@@ -402,14 +397,13 @@ Public Class frmEmp
 
     Private Sub btnGuaMod_Click(sender As Object, e As EventArgs) Handles btnGuaMod.Click
         ep.Clear()
-        CampoBlanco2(Me.pnlDatEmp, ep)
+        CampoBlanco2(Me.pnlDatCli, ep)
 
-        Dim empleado As New clsEmp
-        Dim cliente As New clsCli
+        Dim Usuario As New clsCli
         Dim tabla As New DataTable
         Dim tabla2 As New DataTable
         Dim tabla3 As New DataTable
-        tabla = cliente.VerificarCombo(cmbPais.SelectedValue)
+        tabla = Usuario.VerificarCombo(cmbPais.SelectedValue)
 
         'If tabla2(0)(0) = 0 Then
         If tabla(0)(0) = 2 Then
@@ -417,44 +411,43 @@ Public Class frmEmp
 
             If banbl = True Then
 
-                EmpleadosDatos.CodEmp = CodEmp
-                EmpleadosDatos.DNI = txtDNI.Text
-                EmpleadosDatos.Apellido = txtApe.Text
-                EmpleadosDatos.Nombre = txtNom.Text
-                EmpleadosDatos.Correo = txtMail.Text
-                EmpleadosDatos.CodPais = cmbPais.SelectedValue
-                EmpleadosDatos.Telefono = txtTel.Text
-                EmpleadosDatos.Domicilio = txtDom.Text
-                EmpleadosDatos.IdAlta = CodUsu
-                tabla2 = empleado.VerificarDNIEmpNuevo(txtDNI.Text)
-                tabla3 = empleado.VerificarDNIEmpMod(txtDNI.Text, EmpleadosDatos)
+                ClienteDatos.CodCli = CodCli
+                ClienteDatos.DNI = txtDNI.Text
+                ClienteDatos.Apellido = txtApe.Text
+                ClienteDatos.Nombre = txtNom.Text
+                ClienteDatos.Correo = txtMail.Text
+                ClienteDatos.CodPais = cmbPais.SelectedValue
+                ClienteDatos.Telefono = txtTel.Text
+                ClienteDatos.IdAlta = CodUsu
+                tabla2 = Usuario.VerificarDNINuevo(txtDNI.Text)
+                tabla3 = Usuario.VerificarDNIMod(txtDNI.Text, ClienteDatos)
 
                 If bandera = True Then
                     If tabla2(0)(0) = 0 Then
-                        If EmpleadosSP.InsEmp(EmpleadosDatos) Then
-                            MensajeError("Empleado grabado exitosamente.")
+                        If ClientesSP.InsCli(ClienteDatos) Then
+                            MensajeError("Cliente grabado exitosamente.")
                             frmVenCli.btnCliV.BackColor = Color.SteelBlue
-                            btnCreUsu.Visible = False
+                            btnAgrCom.Visible = False
                             HabilitarNo()
                             Determinar()
                         Else
-                            MensajeError("Sucedio un error al intentar grabar el empleado.")
+                            MensajeError("Sucedio un error al intentar grabar el Cliente.")
                         End If
                     Else
-                        ep.SetError(txtDNI, "El DNI ya está asignado a un empleado.")
+                        ep.SetError(txtDNI, "El DNI ya está asignado a un cliente.")
                     End If
 
 
                 Else
                     If tabla3(0)(0) = 0 Then
-                        If EmpleadosSP.ModEmp(EmpleadosDatos) Then
-                            If CodEmp = 0 Then
+                        If ClientesSP.ModCli(ClienteDatos) Then
+                            If CodCli = 0 Then
                                 MensajeError("Ocurrio un error al intentar guardar los cambios (ID 0)")
                             Else
 
-                                EmpleadosDatos.CodEmp = CodEmp
+                                ClienteDatos.CodCli = CodCli
                                 MensajeError("Registro actualizado exitosamente.")
-                                'frmVenCli.btnCliV.BackColor = Color.SteelBlue------------------------------------------
+                                frmVenCli.btnCliV.BackColor = Color.SteelBlue
                                 HabilitarNo()
                                 Determinar()
                             End If
@@ -463,24 +456,24 @@ Public Class frmEmp
                             MensajeError("Ocurrio un error al intentar guardar los cambios")
                         End If
                     Else
-                        ep.SetError(txtDNI, "El DNI ya está asignado a un empleado.")
+                        ep.SetError(txtDNI, "El DNI ya está asignado a un cliente.")
                     End If
 
                 End If
-                btnCreUsu.Visible = False
+                btnAgrCom.Visible = False
 
 
             ElseIf banbl = False Then
-                CampoBlanco2(Me.pnlDatEmp, ep)
-
+                CampoBlanco2(Me.pnlDatCli, ep)
+                ep.Clear()
             End If
 
 
 
         Else
-            'MensajeError("Contraseña incorrecta")
-            ep.SetError(cmbPais, "El país es incorrecto.")
-        End If
+                'MensajeError("Contraseña incorrecta")
+                ep.SetError(cmbPais, "El país es incorrecto.")
+            End If
 
         'Else
         '    ep.SetError(txtDNI, "El DNI ya está asignado a un cliente.")
@@ -489,37 +482,37 @@ Public Class frmEmp
 
     End Sub
 
-    Private Sub txtBusCli_Enter(sender As Object, e As EventArgs) Handles txtBusEmp.Enter
-        If txtBusEmp.Text = "Buscar" Then
-            txtBusEmp.Text = ""
-            txtBusEmp.ForeColor = Color.Black
+    Private Sub txtBusCli_Enter(sender As Object, e As EventArgs) Handles txtBusCli.Enter
+        If txtBusCli.Text = "Buscar" Then
+            txtBusCli.Text = ""
+            txtBusCli.ForeColor = Color.Black
         End If
     End Sub
 
-    Private Sub txtBusCli_Leave(sender As Object, e As EventArgs) Handles txtBusEmp.Leave
-        If String.IsNullOrWhiteSpace(txtBusEmp.Text) Then
-            txtBusEmp.Text = "Buscar"
-            txtBusEmp.ForeColor = Color.Gray
+    Private Sub txtBusCli_Leave(sender As Object, e As EventArgs) Handles txtBusCli.Leave
+        If String.IsNullOrWhiteSpace(txtBusCli.Text) Then
+            txtBusCli.Text = "Buscar"
+            txtBusCli.ForeColor = Color.Gray
             Determinar()
         End If
     End Sub
 
-    Private Sub txtBusCli_TextChanged(sender As Object, e As EventArgs) Handles txtBusEmp.TextChanged
+    Private Sub txtBusCli_TextChanged(sender As Object, e As EventArgs) Handles txtBusCli.TextChanged
 
         Cargar()
     End Sub
 
-    Private Sub txtBusCli_MouseClick(sender As Object, e As MouseEventArgs) Handles txtBusEmp.MouseClick
-        If txtBusEmp.Text = "Buscar" Then
-            txtBusEmp.Text = ""
-            txtBusEmp.ForeColor = Color.Black
+    Private Sub txtBusCli_MouseClick(sender As Object, e As MouseEventArgs) Handles txtBusCli.MouseClick
+        If txtBusCli.Text = "Buscar" Then
+            txtBusCli.Text = ""
+            txtBusCli.ForeColor = Color.Black
         Else
             Cargar()
         End If
 
     End Sub
 
-    Private Sub btnCreUsu_Click(sender As Object, e As EventArgs) Handles btnCreUsu.Click
+    Private Sub btnAgrTel_Click(sender As Object, e As EventArgs) Handles btnAgrTel.Click
         Dim frmTelefonos As New frmTelefonos()
         AddHandler frmTelefonos.FormClosed, AddressOf frmTelefonos_FormClosed
         'Me.Enabled = False ' Deshabilitar Formulario 1

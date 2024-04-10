@@ -71,7 +71,7 @@ Partial Class frmLogin
         btnSalirLog.Location = New Point(324, 0)
         btnSalirLog.Name = "btnSalirLog"
         btnSalirLog.Size = New Size(38, 34)
-        btnSalirLog.TabIndex = 4
+        btnSalirLog.TabIndex = 6
         btnSalirLog.UseVisualStyleBackColor = False
         ' 
         ' Panel1
@@ -105,7 +105,7 @@ Partial Class frmLogin
         btnMiniLog.Location = New Point(287, 0)
         btnMiniLog.Name = "btnMiniLog"
         btnMiniLog.Size = New Size(38, 34)
-        btnMiniLog.TabIndex = 14
+        btnMiniLog.TabIndex = 5
         btnMiniLog.UseVisualStyleBackColor = False
         ' 
         ' PictureBox2
@@ -125,7 +125,7 @@ Partial Class frmLogin
         ckbMostrar.Location = New Point(85, 240)
         ckbMostrar.Name = "ckbMostrar"
         ckbMostrar.Size = New Size(134, 19)
-        ckbMostrar.TabIndex = 12
+        ckbMostrar.TabIndex = 3
         ckbMostrar.Text = "Mostrar Contraseña"
         ckbMostrar.UseVisualStyleBackColor = True
         ' 
@@ -141,7 +141,7 @@ Partial Class frmLogin
         btnIngresar.Location = New Point(85, 278)
         btnIngresar.Name = "btnIngresar"
         btnIngresar.Size = New Size(192, 44)
-        btnIngresar.TabIndex = 11
+        btnIngresar.TabIndex = 4
         btnIngresar.Text = "Iniciar Sesión"
         btnIngresar.UseVisualStyleBackColor = False
         ' 
@@ -174,7 +174,7 @@ Partial Class frmLogin
         txtContrasena.Name = "txtContrasena"
         txtContrasena.PasswordChar = "*"c
         txtContrasena.Size = New Size(192, 21)
-        txtContrasena.TabIndex = 8
+        txtContrasena.TabIndex = 2
         ' 
         ' txtUsuario
         ' 
@@ -184,7 +184,7 @@ Partial Class frmLogin
         txtUsuario.MaxLength = 50
         txtUsuario.Name = "txtUsuario"
         txtUsuario.Size = New Size(192, 21)
-        txtUsuario.TabIndex = 7
+        txtUsuario.TabIndex = 1
         ' 
         ' frmLogin
         ' 
@@ -197,7 +197,7 @@ Partial Class frmLogin
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmLogin"
-        Text = "Conquista tu Mundo"
+        Text = "Conquista tu Mundo Logueo"
         CType(epLogin, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)

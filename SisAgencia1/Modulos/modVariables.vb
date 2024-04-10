@@ -18,13 +18,34 @@ Module modVariables
         frmPrincipal.niPpal.Text = "Conquista tu Mundo"
         frmPrincipal.niPpal.BalloonTipTitle = "Conquista tu Mundo"
         frmPrincipal.niPpal.BalloonTipText = mensaje
-        frmPrincipal.Text = ""
+        frmPrincipal.Text = titulo
         frmPrincipal.niPpal.ShowBalloonTip(1000)
 
     End Sub
 
     Public Sub ClearLabel(labell As Label)
         labell.Text = ""
+
+    End Sub
+
+
+
+    Public UltimosFormularios As New List(Of String)
+
+    ' Método para actualizar la lista de últimos formularios visitados
+    Public Sub ActualizarUltimosFormularios(nombreFormulario As String)
+        If UltimosFormularios.Contains(nombreFormulario) Then
+            UltimosFormularios.Remove(nombreFormulario)
+        End If
+
+        UltimosFormularios.Insert(0, nombreFormulario)
+
+        ' Mantener solo los últimos 4 formularios visitados
+        If UltimosFormularios.Count > 4 Then
+            UltimosFormularios.RemoveAt(UltimosFormularios.Count - 1)
+        End If
+
+        ' Actualizar los botones en el panel
 
     End Sub
 
@@ -95,7 +116,30 @@ Module modVariables
         ' Verificar si se encontró un formulario para cerrar
         If formToClose IsNot Nothing Then
             ' Preguntar al usuario si está seguro de cerrar el formulario
-            Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario " & formToClose.Name & "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario " & formToClose.Text & "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
+            If respuesta = DialogResult.Yes Then
+                formToClose.Close()
+
+            End If
+        End If
+    End Sub
+
+    Public Sub CambiarFormularioSuperiorEnPanelConConfirmacion(panel As Panel)
+        ' Verificar si hay algún formulario abierto en el panel
+        Dim formToClose As Form = Nothing
+        For Each control As Control In panel.Controls
+            If TypeOf control Is Form AndAlso control.Visible Then
+                formToClose = DirectCast(control, Form)
+                Exit For
+            End If
+        Next
+
+        ' Verificar si se encontró un formulario para cerrar
+        If formToClose IsNot Nothing Then
+            ' Preguntar al usuario si está seguro de cerrar el formulario
+            Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario " & formToClose.Text & "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
             ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
             If respuesta = DialogResult.Yes Then
@@ -196,7 +240,7 @@ Module modVariables
         Dim textBox = TryCast(sender, TextBox)
         If textBox IsNot Nothing Then
             ' Verifica si la tecla presionada no es un dígito, +, -, espacio ni la tecla BackSpace
-            If Not Char.IsDigit(e.KeyChar) AndAlso Not e.KeyChar = "+"c AndAlso Not e.KeyChar = "-"c AndAlso Not e.KeyChar = " "c AndAlso Not e.KeyChar = Convert.ToChar(Keys.Back) Then
+            If Not Char.IsDigit(e.KeyChar) AndAlso Not e.KeyChar = "+"c AndAlso Not e.KeyChar = "-"c AndAlso Not e.KeyChar = Convert.ToChar(Keys.Back) Then
                 ' Si no es un dígito, +, -, espacio ni la tecla BackSpace, cancela el evento
                 e.Handled = True
             End If
@@ -212,7 +256,7 @@ Module modVariables
             ' Elimina cualquier carácter que no sea un dígito, +, -, o espacio
             Dim nuevoTexto As String = ""
             For Each c As Char In texto
-                If Char.IsDigit(c) OrElse c = "+"c OrElse c = "-"c OrElse c = " "c Then
+                If Char.IsDigit(c) OrElse c = "+"c OrElse c = "-"c Then
                     nuevoTexto &= c
                 End If
             Next
@@ -244,4 +288,33 @@ Module modVariables
 
     End Sub
 
+    Public Sub CampoBlanco2(panel As Panel, err As ErrorProvider)
+        For Each control As Control In panel.Controls
+            If TypeOf control Is TextBox Then
+                Dim textBox As TextBox = DirectCast(control, TextBox)
+                If String.IsNullOrEmpty(textBox.Text) AndAlso textBox.Name <> "txtMail" Then
+                    err.SetError(textBox, $"El campo '{textBox.Tag}' no puede estar vacío.")
+                    banbl = False
+                    Return
+                End If
+            End If
+        Next
+
+        banbl = True
+    End Sub
+
+    Public Sub CampoBlancoRestaurar(panel As Panel, err As ErrorProvider)
+        For Each control As Control In panel.Controls
+            If TypeOf control Is TextBox Then
+                Dim textBox As TextBox = DirectCast(control, TextBox)
+                If String.IsNullOrEmpty(textBox.Text) AndAlso textBox.Name <> "txtMail" AndAlso textBox.Name <> "txtTel" Then
+                    err.SetError(textBox, $"El campo '{textBox.Tag}' no puede estar vacío.")
+                    banbl = False
+                    Return
+                End If
+            End If
+        Next
+
+        banbl = True
+    End Sub
 End Module

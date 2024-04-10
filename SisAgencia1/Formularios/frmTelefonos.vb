@@ -1,6 +1,7 @@
 ﻿Imports System.Net.Security
 Imports System.Reflection
 Imports System.Runtime.InteropServices
+
 Imports Datos
 Imports Entidades
 
@@ -13,17 +14,17 @@ Public Class frmTelefonos
     Dim BanderaRes As Boolean = False
     Dim CodNum As Integer = 0
 
-    Private Sub frmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvTelefonos.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9)
-        dgvTelefonos.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9)
-        Inicio()
-        gbDatoTel.Text = "Cliente: " + ApeCli + " " + NomCli
-        CentrarForm(Me)
-        GetTel()
-        Me.MaximumSize = Screen.FromControl(Me).WorkingArea.Size
-        Me.dgvTelefonos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-        Me.dgvTelefonos.RowHeadersWidth = 15
-    End Sub
+    'Private Sub frmClientes_Load(sender As Object, e As EventArgs)
+    '    dgvTelefonos.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9)
+    '    dgvTelefonos.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 12)
+    '    Inicio()
+    '    gbDatoTel.Text = "Cliente: " + ApeCli + " " + NomCli
+    '    CentrarForm(Me)
+    '    GetTel()
+    '    MaximumSize = Screen.FromControl(Me).WorkingArea.Size
+    '    dgvTelefonos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+    '    dgvTelefonos.RowHeadersWidth = 15
+    'End Sub
 
 
     Private Sub GetTel()
@@ -39,15 +40,15 @@ Public Class frmTelefonos
 
 
             If e.RowIndex >= 0 AndAlso e.RowIndex < dgvTelefonos.Rows.Count Then
-                Dim row As DataGridViewRow = dgvTelefonos.Rows(e.RowIndex)
-                If Not row.Cells.Cast(Of DataGridViewCell)().Any(Function(cell) cell.Value IsNot Nothing AndAlso Not cell.Value.Equals(DBNull.Value)) Then
+                Dim row = dgvTelefonos.Rows(e.RowIndex)
+                If Not row.Cells.Cast(Of DataGridViewCell).Any(Function(cell) cell.Value IsNot Nothing AndAlso Not cell.Value.Equals(DBNull.Value)) Then
 
 
                 Else
-                    CodNum = row.Cells(0)?.Value?.ToString()
+                    CodNum = row.Cells(0)?.Value?.ToString
                     btnAgrMod.Text = "    Modificar"
                     btnAgrMod.Image = My.Resources.icons8_más_b_24
-                    If row.Cells(6)?.Value?.ToString() = "Activo" Then
+                    If row.Cells(6)?.Value?.ToString = "Activo" Then
                         btnEliRes.Enabled = True
                         btnEliRes.Text = "    Eliminar"
                         txtAgrTel.Enabled = True
@@ -55,12 +56,12 @@ Public Class frmTelefonos
                         BanderaRes = False
                         btnAgrMod.Enabled = True
                         btnEliRes.Image = My.Resources.icons8_menos_25
-                        txtAgrTel.Text = row.Cells(3)?.Value?.ToString()
-                    ElseIf row.Cells(6)?.Value?.ToString() = "Eliminado" Then
+                        txtAgrTel.Text = row.Cells(3)?.Value?.ToString
+                    ElseIf row.Cells(6)?.Value?.ToString = "Eliminado" Then
                         btnEliRes.Text = "    Restaurar"
                         BanderaMod = True
                         BanderaRes = True
-                        txtAgrTel.Text = row.Cells(3)?.Value?.ToString()
+                        txtAgrTel.Text = row.Cells(3)?.Value?.ToString
                         btnAgrMod.Enabled = False
                         btnEliRes.Enabled = True
                         txtAgrTel.Enabled = False
@@ -99,17 +100,18 @@ Public Class frmTelefonos
         If banbl = True Then
 
             ClienteDatos.CodNum = CodNum
-            ClienteDatos.CodCli = frmClientes.CodCli
+            ClienteDatos.CodCli = frmBase.CodCli
             ClienteDatos.Telefono = txtAgrTel.Text
             ClienteDatos.IdAlta = CodUsu
 
 
-            If frmClientes.CodCli = 0 Then
+            If frmBase.CodCli = 0 Then
                 MensajeError("Ocurrio un error al intentar guardar los cambios (ID 0)")
             Else
                 If BanderaMod = False Then
                     If TelefonosSP.InsTel(ClienteDatos) Then
                         MensajeError("Teléfono grabado exitosamente.")
+                        frmBase.Determinar()
                         Inicio()
                         GetTel()
                     Else
@@ -120,7 +122,7 @@ Public Class frmTelefonos
                     If TelefonosSP.ModTel(ClienteDatos) Then
                         ClienteDatos.CodCli = frmClientes.CodCli
                         MensajeError("Registro actualizado exitosamente.")
-
+                        frmBase.Determinar()
                         Inicio()
                         GetTel()
                     Else
@@ -131,7 +133,7 @@ Public Class frmTelefonos
 
 
         ElseIf banbl = False Then
-            MensajeError("Hay uno o mas campos vacios")
+            MensajeError("Debe ingresar un teléfono.")
             ep.Clear()
         End If
 
@@ -155,21 +157,21 @@ Public Class frmTelefonos
             CampoBlanco(Me.gbDatoTel, ep)
             If banbl = True Then
                 If TelefonosSP.AltaTelefono(CodNum) Then
-
+                    frmBase.Determinar()
 
                 Else
                     MensajeError("Hubo un error al intentar recuperar el número.")
                 End If
             ElseIf banbl = False Then
-                MensajeError("Hay uno o mas campos vacios")
-                ep.Clear()
+                CampoBlanco(Me.gbDatoTel, ep)
+
             End If
         Else
             'eliminar
-            Dim resultado As DialogResult = MessageBox.Show("Esta por dar de baja un número de cliente, ¿Desea continuar?", "Eliminar número.", MessageBoxButtons.YesNoCancel)
+            Dim resultado As DialogResult = MessageBox.Show("Esta por dar de baja un número de cliente ¿Desea continuar?", "Eliminar número.", MessageBoxButtons.YesNoCancel)
             If resultado = DialogResult.Yes Then
                 If TelefonosSP.BajaTelefono(CodNum, CodUsu) Then
-
+                    frmBase.Determinar()
 
                 Else
                     MensajeError("Hubo un error al intentar dar de baja el número.")
@@ -287,4 +289,301 @@ Public Class frmTelefonos
     End Sub
 
 
+
+
+
+
+
+
+
+
+
+    '-------------------EXPERIMENTO---------------------------------------------------------------------------------------------------EXPERIMENTO------------------------------------------------------------------------------------EXPERIMENTO***************************
+    Private Const WM_MOUSEACTIVATE As Integer = &H21
+    Private Const WM_NCACTIVATE As Integer = &H86
+
+    Protected Overrides Sub WndProc(ByRef m As Message)
+        MyBase.WndProc(m)
+
+        If m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE Then
+            Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+            If clickedOutside Then
+                ' Coloca aquí el código que deseas ejecutar cuando se hace clic fuera del formulario
+                If pnlMnuTool.BackColor = Color.SteelBlue Then
+                    pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+                    btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+                    btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+                    btnMini.BackColor = Color.FromArgb(60, 113, 155)
+                    btnExit.BackColor = Color.FromArgb(60, 113, 155)
+                Else
+                    pnlMnuTool.BackColor = Color.SteelBlue
+                    btnMnuDesp.BackColor = Color.SteelBlue
+                    btnMiniMax.BackColor = Color.SteelBlue
+                    btnMini.BackColor = Color.SteelBlue
+                    btnExit.BackColor = Color.SteelBlue
+                End If
+            End If
+        End If
+    End Sub
+    ''    End IfPrivate currentColor As Color = Color.SteelBlue
+    'Private Const WM_MOUSEACTIVATE As Integer = &H21
+    'Private Const WM_NCACTIVATE As Integer = &H86
+    'Private clickCount As Integer = 0
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside Then
+    '            ' Incrementar el contador de clics
+    '            clickCount += 1
+
+    '            ' Cambiar el color del formulario
+    '            If clickCount Mod 2 = 1 Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '            End If
+
+    '            ' Si el contador de clics es impar, forzar el color a SteelBlue
+    '            If clickCount Mod 2 = 1 Then
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+    ''Private clickCount As Integer = 0
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If (m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE) Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside Then
+    '            ' Incrementar el contador de clics
+    '            clickCount += 1
+
+    '            ' Cambiar el color del formulario
+    '            If clickCount Mod 2 = 1 Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private currentColor As Color = Color.SteelBlue
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If (m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE) Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside Then
+    '            ' Alternar el color del formulario
+    '            If currentColor = Color.SteelBlue Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '                currentColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '                currentColor = Color.SteelBlue
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If (m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE) Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside Then
+    '            ' Alternar el color del formulario
+    '            If currentColor = Color.SteelBlue Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '                currentColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '                currentColor = Color.SteelBlue
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+    'Private clickCounter As Integer = 0
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If (m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE) Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside Then
+    '            ' Incrementa el contador de clics
+    '            clickCounter += 1
+
+    '            ' Alterna el color en función del contador
+    '            If clickCounter Mod 2 = 0 Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '            End If
+    '        End If
+    '    End If
+    'End Sub
+
+    'End Sub
+    'Private isProcessingClick As Boolean = False
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If Not isProcessingClick AndAlso (m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE) Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside Then
+    '            ' Coloca aquí el código que deseas ejecutar cuando se hace clic fuera del formulario
+    '            If pnlMnuTool.BackColor = Color.SteelBlue Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '            End If
+    '            isProcessingClick = True
+    '        End If
+    '    End If
+    'End Sub
+
+    'Private clickedOutsideOnce As Boolean = False
+
+    'Protected Overrides Sub WndProc(ByRef m As Message)
+    '    MyBase.WndProc(m)
+
+    '    If m.Msg = WM_MOUSEACTIVATE OrElse m.Msg = WM_NCACTIVATE Then
+    '        Dim clickedOutside As Boolean = Not Me.ClientRectangle.Contains(Me.PointToClient(Cursor.Position))
+    '        If clickedOutside AndAlso Not clickedOutsideOnce Then
+    '            ' Coloca aquí el código que deseas ejecutar cuando se hace clic fuera del formulario
+    '            If pnlMnuTool.BackColor = Color.SteelBlue Then
+    '                pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '                btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '            Else
+    '                pnlMnuTool.BackColor = Color.SteelBlue
+    '                btnMnuDesp.BackColor = Color.SteelBlue
+    '                btnMiniMax.BackColor = Color.SteelBlue
+    '                btnMini.BackColor = Color.SteelBlue
+    '                btnExit.BackColor = Color.SteelBlue
+    '            End If
+    '            clickedOutsideOnce = True
+    '        End If
+    '    ElseIf m.Msg = WM_MOUSEMOVE Then
+    '        clickedOutsideOnce = False ' Restablecer el estado si se mueve el ratón dentro del formulario
+    '    End If
+    'End Sub
+
+    Dim iteraciones As Integer = 0
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Interval = 200 ' Establece el intervalo del temporizador (en milisegundos)
+
+        dgvTelefonos.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9)
+        dgvTelefonos.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 10)
+        Inicio()
+        gbDatoTel.Text = "Cliente: " + ApeCli + " " + NomCli
+        CentrarForm(Me)
+        GetTel()
+        MaximumSize = Screen.FromControl(Me).WorkingArea.Size
+        dgvTelefonos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        dgvTelefonos.RowHeadersWidth = 15
+    End Sub
+
+    Private Sub frmTelefonos_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
+        pnlMnuTool.BackColor = Color.SteelBlue
+        btnMnuDesp.BackColor = Color.SteelBlue
+        btnMiniMax.BackColor = Color.SteelBlue
+        btnMini.BackColor = Color.SteelBlue
+        btnExit.BackColor = Color.SteelBlue 'hacer funcion, se repite mucho
+    End Sub
+
+    Private Sub btnMnuDesp_MouseEnter(sender As Object, e As EventArgs) Handles btnMnuDesp.MouseEnter
+        pnlMnuTool.BackColor = Color.SteelBlue
+        btnMnuDesp.BackColor = Color.SteelBlue
+        btnMiniMax.BackColor = Color.SteelBlue
+        btnMini.BackColor = Color.SteelBlue
+        btnExit.BackColor = Color.SteelBlue
+    End Sub
+
+    'Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    '    If pnlMnuTool.BackColor = Color.SteelBlue Then
+    '        pnlMnuTool.BackColor = Color.FromArgb(60, 113, 155) ' Cambia el color de fondo a amarillo
+    '        btnMnuDesp.BackColor = Color.FromArgb(60, 113, 155)
+    '        btnMiniMax.BackColor = Color.FromArgb(60, 113, 155)
+    '        btnMini.BackColor = Color.FromArgb(60, 113, 155)
+    '        btnExit.BackColor = Color.FromArgb(60, 113, 155)
+    '    Else
+    '        pnlMnuTool.BackColor = Color.SteelBlue ' Cambia el color de fondo a amarillo
+    '        btnMnuDesp.BackColor = Color.SteelBlue
+    '        btnMiniMax.BackColor = Color.SteelBlue
+    '        btnMini.BackColor = Color.SteelBlue
+    '        btnExit.BackColor = Color.SteelBlue
+    '    End If
+
+    '    ' Incrementa el número de iteraciones
+    '    iteraciones += 1
+
+    '    ' Detiene el temporizador después de cinco iteraciones
+    '    If iteraciones >= 4 Then
+    '        Timer1.Stop()
+    '    End If
+    'End Sub
 End Class

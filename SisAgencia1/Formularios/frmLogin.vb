@@ -61,15 +61,31 @@ Public Class frmLogin
     End Sub
 
     Private Sub btnIngresar_Click(sender As Object, e As EventArgs) Handles btnIngresar.Click
-        If txtUsuario.Text = "" Or txtContrasena.Text = "" Then
-            epLogin.SetError(txtContrasena, "Los campos son obligatorios.")
+        epLogin.Clear()
+        If txtUsuario.Text = "" Then
+            epLogin.SetError(txtUsuario, "Debe ingresar un usuario.")
+            Return
+        ElseIf txtContrasena.Text = "" Then
+            epLogin.SetError(txtContrasena, "Debe ingresar una contraseña.")
             Return
         End If
+
+
         Login()
 
     End Sub
     Private Sub txtContrasena_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContrasena.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
+            epLogin.Clear()
+            If txtUsuario.Text = "" Then
+                epLogin.SetError(txtUsuario, "Debe ingresar un usuario.")
+                Return
+            ElseIf txtContrasena.Text = "" Then
+                epLogin.SetError(txtContrasena, "Debe ingresar una contraseña.")
+                Return
+            End If
+
+
             Login()
         End If
     End Sub
@@ -91,7 +107,7 @@ Public Class frmLogin
             txtUsuario.Text = ""
             txtContrasena.Text = ""
             frmPrincipal.Show()
-            frmPrincipal.Text = titulo & " - " & ApeEmp & " " & NomEmp
+            frmPrincipal.Text = titulo
             frmPrincipal.tsslNomUsu.Text = "Conquista tu Mundo - ¡Bienvenido " + NomUsu + "!"
             frmPrincipal.tsslNomUsu.Visible = True
 
@@ -116,7 +132,9 @@ Public Class frmLogin
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CentrarForm(Me)
-
+        txtUsuario.Select()
+        SetWindowLong(Handle, -8, CInt(GetDesktopWindow()))
+        SetClassLong(Handle, -26, GetClassLong(Handle, -26) Or CS_DROPSHADOW)
     End Sub
 
     ' Declarar una instancia privada compartida para garantizar que solo haya una instancia de frmLogin
@@ -161,6 +179,7 @@ Public Class frmLogin
 
 
 
+
     'para hashear la contraseña
     ''   Imports System.Security.Cryptography
 
@@ -174,6 +193,30 @@ Public Class frmLogin
     '          Return builder.ToString()
     '      End Using
     '  End Function
+
+    Private Const CS_DROPSHADOW As Integer = &H20000
+
+    ' Importar funciones nativas de Windows
+    <DllImport("user32.dll", SetLastError:=True)>
+    Private Shared Function GetDesktopWindow() As IntPtr
+    End Function
+
+    <DllImport("user32.dll")>
+    Private Shared Function SetWindowLong(hWnd As IntPtr, nIndex As Integer, dwNewLong As Integer) As Integer
+    End Function
+
+    <DllImport("user32.dll")>
+    Private Shared Function GetClassLong(hWnd As IntPtr, nIndex As Integer) As Integer
+    End Function
+
+    <DllImport("user32.dll")>
+    Private Shared Function SetClassLong(hWnd As IntPtr, nIndex As Integer, dwNewLong As Integer) As Integer
+    End Function
+
+    Public Sub New()
+        InitializeComponent()
+    End Sub
+
 
     '  Private Sub Login()
     '      Dim Usuario As New clsUsu

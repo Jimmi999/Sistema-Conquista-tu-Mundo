@@ -8,7 +8,7 @@ Public Class clsConexion
         Try
             'Agregamos al objeto las credenciales del servidor sql
 
-            con = New SqlConnection("data source=LAPTOP-A4A1K48V\SQLEXPRESS01;initial catalog=SisAgencia; Integrated Security = True")
+            con = New SqlConnection("data source=DESKTOP-CROVK3O\SQLEXPRESS;initial catalog=SisAgencia; Integrated Security = True")
 
             'Abrimos la conexion
             con.Open()

@@ -30,18 +30,11 @@ Partial Class frmEmpUsu
         bServicios = New Button()
         bVentas = New Button()
         lblDescripcion = New Label()
-        TableLayoutPanel1 = New TableLayoutPanel()
-        GroupBox1 = New GroupBox()
-        BtnUsu = New Button()
-        BtnEmplea = New Button()
-        Label1 = New Label()
-        PictureBox1 = New PictureBox()
-        BtnVolver = New Button()
+        btnUsu = New Button()
+        btnEmp = New Button()
+        pnlEmpUsu = New Panel()
         tlpMenu.SuspendLayout()
         gbMenu.SuspendLayout()
-        TableLayoutPanel1.SuspendLayout()
-        GroupBox1.SuspendLayout()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' tlpMenu
@@ -149,119 +142,68 @@ Partial Class frmEmpUsu
         lblDescripcion.Text = "Label1"
         lblDescripcion.Visible = False
         ' 
-        ' TableLayoutPanel1
+        ' btnUsu
         ' 
-        TableLayoutPanel1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        TableLayoutPanel1.BackColor = Color.Azure
-        TableLayoutPanel1.ColumnCount = 3
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 13.2231407F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 86.77686F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 85F))
-        TableLayoutPanel1.Controls.Add(GroupBox1, 1, 1)
-        TableLayoutPanel1.Controls.Add(Label1, 1, 2)
-        TableLayoutPanel1.Controls.Add(PictureBox1, 0, 2)
-        TableLayoutPanel1.Controls.Add(BtnVolver, 0, 0)
-        TableLayoutPanel1.Location = New Point(12, 9)
-        TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.RowCount = 3
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 13.8235292F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 86.17647F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Absolute, 69F))
-        TableLayoutPanel1.Size = New Size(776, 426)
-        TableLayoutPanel1.TabIndex = 1
+        btnUsu.BackColor = Color.SteelBlue
+        btnUsu.FlatAppearance.BorderColor = Color.FromArgb(CByte(134), CByte(26), CByte(26))
+        btnUsu.FlatAppearance.BorderSize = 0
+        btnUsu.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnUsu.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnUsu.FlatStyle = FlatStyle.Flat
+        btnUsu.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnUsu.ForeColor = Color.White
+        btnUsu.Image = My.Resources.Resources.icons8_cliente_24
+        btnUsu.ImageAlign = ContentAlignment.MiddleLeft
+        btnUsu.Location = New Point(0, 0)
+        btnUsu.Name = "btnUsu"
+        btnUsu.Size = New Size(105, 31)
+        btnUsu.TabIndex = 6
+        btnUsu.Text = "       Usuarios"
+        btnUsu.UseVisualStyleBackColor = False
         ' 
-        ' GroupBox1
+        ' btnEmp
         ' 
-        GroupBox1.Anchor = AnchorStyles.None
-        GroupBox1.Controls.Add(BtnUsu)
-        GroupBox1.Controls.Add(BtnEmplea)
-        GroupBox1.FlatStyle = FlatStyle.Flat
-        GroupBox1.Location = New Point(207, 87)
-        GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(366, 230)
-        GroupBox1.TabIndex = 0
-        GroupBox1.TabStop = False
+        btnEmp.BackColor = Color.SteelBlue
+        btnEmp.FlatAppearance.BorderColor = Color.MediumTurquoise
+        btnEmp.FlatAppearance.BorderSize = 0
+        btnEmp.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnEmp.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnEmp.FlatStyle = FlatStyle.Flat
+        btnEmp.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnEmp.ForeColor = Color.White
+        btnEmp.Image = My.Resources.Resources.icons8_ventas_24
+        btnEmp.ImageAlign = ContentAlignment.MiddleLeft
+        btnEmp.Location = New Point(105, 0)
+        btnEmp.Name = "btnEmp"
+        btnEmp.Size = New Size(122, 31)
+        btnEmp.TabIndex = 7
+        btnEmp.Text = "       Empleados"
+        btnEmp.UseVisualStyleBackColor = False
         ' 
-        ' BtnUsu
+        ' pnlEmpUsu
         ' 
-        BtnUsu.BackColor = Color.SteelBlue
-        BtnUsu.FlatStyle = FlatStyle.Flat
-        BtnUsu.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnUsu.ForeColor = Color.White
-        BtnUsu.Image = My.Resources.Resources.icons8_grupo_de_primer_plano_seleccionado_60
-        BtnUsu.Location = New Point(196, 69)
-        BtnUsu.Name = "BtnUsu"
-        BtnUsu.Size = New Size(164, 95)
-        BtnUsu.TabIndex = 5
-        BtnUsu.Text = "Usuarios"
-        BtnUsu.TextAlign = ContentAlignment.BottomCenter
-        BtnUsu.UseVisualStyleBackColor = False
-        ' 
-        ' BtnEmplea
-        ' 
-        BtnEmplea.BackColor = Color.SteelBlue
-        BtnEmplea.FlatStyle = FlatStyle.Flat
-        BtnEmplea.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BtnEmplea.ForeColor = Color.White
-        BtnEmplea.Image = My.Resources.Resources.icons8_grupo_de_primer_plano_seleccionado_60
-        BtnEmplea.Location = New Point(6, 69)
-        BtnEmplea.Name = "BtnEmplea"
-        BtnEmplea.Size = New Size(164, 95)
-        BtnEmplea.TabIndex = 4
-        BtnEmplea.Text = "Empleados"
-        BtnEmplea.TextAlign = ContentAlignment.BottomCenter
-        BtnEmplea.UseVisualStyleBackColor = False
-        ' 
-        ' Label1
-        ' 
-        Label1.Anchor = AnchorStyles.Top
-        Label1.AutoSize = True
-        Label1.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.ForeColor = Color.SteelBlue
-        Label1.Location = New Point(359, 356)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(63, 20)
-        Label1.TabIndex = 1
-        Label1.Text = "Label1"
-        Label1.Visible = False
-        ' 
-        ' PictureBox1
-        ' 
-        PictureBox1.Image = My.Resources.Resources.output_onlinepngtools__1_3
-        PictureBox1.Location = New Point(3, 359)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(85, 58)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 3
-        PictureBox1.TabStop = False
-        ' 
-        ' BtnVolver
-        ' 
-        BtnVolver.BackColor = Color.SteelBlue
-        BtnVolver.FlatStyle = FlatStyle.Flat
-        BtnVolver.ForeColor = Color.Black
-        BtnVolver.Location = New Point(3, 3)
-        BtnVolver.Name = "BtnVolver"
-        BtnVolver.Size = New Size(75, 23)
-        BtnVolver.TabIndex = 4
-        BtnVolver.Text = "Volver"
-        BtnVolver.UseVisualStyleBackColor = False
+        pnlEmpUsu.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        pnlEmpUsu.BackColor = Color.Azure
+        pnlEmpUsu.BackgroundImage = CType(resources.GetObject("pnlEmpUsu.BackgroundImage"), Image)
+        pnlEmpUsu.BackgroundImageLayout = ImageLayout.Center
+        pnlEmpUsu.Location = New Point(0, 31)
+        pnlEmpUsu.Name = "pnlEmpUsu"
+        pnlEmpUsu.Size = New Size(802, 420)
+        pnlEmpUsu.TabIndex = 8
         ' 
         ' frmEmpUsu
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.Azure
+        BackColor = Color.SteelBlue
         ClientSize = New Size(800, 450)
-        Controls.Add(TableLayoutPanel1)
+        Controls.Add(pnlEmpUsu)
+        Controls.Add(btnEmp)
+        Controls.Add(btnUsu)
         Name = "frmEmpUsu"
         Text = "frmEmpUsu"
         tlpMenu.ResumeLayout(False)
         gbMenu.ResumeLayout(False)
-        TableLayoutPanel1.ResumeLayout(False)
-        TableLayoutPanel1.PerformLayout()
-        GroupBox1.ResumeLayout(False)
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -272,11 +214,7 @@ Partial Class frmEmpUsu
     Friend WithEvents bServicios As Button
     Friend WithEvents bVentas As Button
     Friend WithEvents lblDescripcion As Label
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents BtnEmplea As Button
-    Friend WithEvents BtnUsu As Button
-    Friend WithEvents BtnVolver As Button
+    Friend WithEvents btnUsu As Button
+    Friend WithEvents btnEmp As Button
+    Friend WithEvents pnlEmpUsu As Panel
 End Class
