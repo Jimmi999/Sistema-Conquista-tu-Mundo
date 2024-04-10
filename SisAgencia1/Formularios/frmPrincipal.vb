@@ -1,6 +1,8 @@
 ﻿Imports System.Drawing.Drawing2D
 Imports System.Drawing.Text
+Imports System
 Imports System.Runtime.InteropServices
+Imports System.Windows.Forms
 Public Class frmPrincipal
 
 
@@ -20,6 +22,57 @@ Public Class frmPrincipal
 
 #End Region
 #Region "Eventos"
+
+    'SOMBRA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    '' Constante para la sombra
+    'Private Const CS_DROPSHADOW As Integer = &H20000
+
+    '' Importar funciones nativas de Windows
+    '<DllImport("user32.dll", SetLastError:=True)>
+    'Private Shared Function GetDesktopWindow() As IntPtr
+    'End Function
+
+    '<DllImport("user32.dll")>
+    'Private Shared Function SetWindowLong(hWnd As IntPtr, nIndex As Integer, dwNewLong As Integer) As Integer
+    'End Function
+
+    '<DllImport("user32.dll")>
+    'Private Shared Function GetClassLong(hWnd As IntPtr, nIndex As Integer) As Integer
+    'End Function
+
+    '<DllImport("user32.dll")>
+    'Private Shared Function SetClassLong(hWnd As IntPtr, nIndex As Integer, dwNewLong As Integer) As Integer
+    'End Function
+
+    'Public Sub New()
+    '    InitializeComponent()
+    'End Sub
+
+
+
+
+
+
+
+
+
+    'SOMBRA FIN
+
+
     Dim FrmClientes As New frmClientes
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -29,10 +82,16 @@ Public Class frmPrincipal
         bMax = True
         Me.btnMiniMax.Image = My.Resources.icons8_comprimir_25
         ' AddHandler Me.Resize, AddressOf frmPrincipal_Resize
+
+        FormBorderStyle = FormBorderStyle.None
+
+        ' Agrega la sombra
+        ''SetWindowLong(Handle, -8, CInt(GetDesktopWindow()))
+        ''SetClassLong(Handle, -26, GetClassLong(Handle, -26) Or CS_DROPSHADOW)
     End Sub
 
     Public Sub CerrarSesion()
-        Me.Text = titulo
+        Me.Text = "A"
         Me.tsslNomUsu.Text = ""
         Me.tsslNomUsu.Visible = False
 
@@ -104,7 +163,7 @@ Public Class frmPrincipal
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
 
-        Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
         If respuesta = DialogResult.Yes Then
@@ -181,18 +240,18 @@ Public Class frmPrincipal
         End If
     End Sub
 
-    Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnSalirLog.Click
+    'Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnSalirLog.Click
 
-        Dim respuesta = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+    '    Dim respuesta = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
-        If respuesta = DialogResult.Yes Then
-            CerrarSesion()
+    '    ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
+    '    If respuesta = DialogResult.Yes Then
+    '        CerrarSesion()
 
-        End If
+    '    End If
 
 
-    End Sub
+    'End Sub
 
     Private Sub btnHerr_Click(sender As Object, e As EventArgs) Handles btnHerr.Click
         If pnlHerr.Visible = True Then
@@ -233,13 +292,71 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub btnInicio_Click(sender As Object, e As EventArgs) Handles btnInicio.Click
-        CerrarForms()
+        If Application.OpenForms.OfType(Of frmBase)().Any() Then
+
+            If frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155) Then
+                Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario clientes?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
+                If respuesta = DialogResult.Yes Then
+                    CerrarForms()
+
+                End If
+            Else
+                CerrarForms()
+            End If
+        ElseIf Application.OpenForms.OfType(Of frmVenCli)().Any() Then
+            CerrarForms()
+
+
+        ElseIf Application.OpenForms.OfType(Of frmEmpUsu)().Any() Then
+            CerrarForms()
+            If Application.OpenForms.OfType(Of frmEmp)().Any() Then
+
+                If frmEmpUsu.btnEmp.BackColor = Color.FromArgb(60, 113, 155) Then
+                    Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario empleados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                    ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
+                    If respuesta = DialogResult.Yes Then
+                        CerrarForms()
+
+                    End If
+                Else
+                    CerrarForms()
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
-        AbrirFormPanel(frmVenCli, pnlPpal)
-        btnVolver.Visible = True
-        pnlMnuDesp.Visible = False
+
+
+
+
+        If Application.OpenForms.OfType(Of frmBase)().Any() Then
+
+            If frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155) Then
+                Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario " & frmBase.Text & "?
+                ", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
+                If respuesta = DialogResult.Yes Then
+                    frmBase.Close()
+                    btnVolver.Visible = True
+                    pnlMnuDesp.Visible = False
+
+                End If
+            Else
+                frmBase.Close()
+                btnVolver.Visible = True
+                pnlMnuDesp.Visible = False
+            End If
+        ElseIf Application.OpenForms.OfType(Of frmVenCli)().Any() Then
+
+        Else
+            AbrirFormPanel(frmVenCli, pnlPpal)
+
+        End If
     End Sub
 
     Private Sub frmPrincipal_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
@@ -285,6 +402,30 @@ Public Class frmPrincipal
 
     Private Sub btnUsuarios_Click(sender As Object, e As EventArgs) Handles btnUsuarios.Click
         pnlMnuDesp.Visible = False
+        If Application.OpenForms.OfType(Of frmEmp)().Any() Then
+
+            If frmEmpUsu.btnEmp.BackColor = Color.FromArgb(60, 113, 155) Then
+                Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas cerrar el formulario " & frmEmp.Text & "?
+                ", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+                ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
+                If respuesta = DialogResult.Yes Then
+                    frmEmp.Close()
+                    btnVolver.Visible = True
+                    pnlMnuDesp.Visible = False
+
+                End If
+            Else
+                frmEmp.Close()
+                btnVolver.Visible = True
+                pnlMnuDesp.Visible = False
+            End If
+        ElseIf Application.OpenForms.OfType(Of frmEmpUsu)().Any() Then
+
+        Else
+            AbrirFormPanel(frmEmpUsu, pnlPpal)
+
+        End If
     End Sub
 
     Private Sub btnConfig_Click(sender As Object, e As EventArgs) Handles btnConfig.Click
@@ -296,14 +437,25 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
-        If Application.OpenForms.OfType(Of frmClientes)().Any() Then
+        If Application.OpenForms.OfType(Of frmBase)().Any() Then
 
-            If frmVenCli.btnCliV.BackColor = Color.Firebrick Then
+            If frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155) Then
                 CerrarFormularioSuperiorEnPanelConConfirmacion(frmVenCli.pnlVenCli)
             Else
                 CerrarFormularioSuperiorEnPanel(frmVenCli.pnlVenCli)
             End If
         ElseIf Application.OpenForms.OfType(Of frmVenCli)().Any() Then
+            CerrarForms()
+
+
+        ElseIf Application.OpenForms.OfType(Of frmEmp)().Any() Then
+
+            If frmEmpUsu.btnEmp.BackColor = Color.FromArgb(60, 113, 155) Then
+                CerrarFormularioSuperiorEnPanelConConfirmacion(frmEmpUsu.pnlEmpUsu)
+            Else
+                CerrarFormularioSuperiorEnPanel(frmEmpUsu.pnlEmpUsu)
+            End If
+        ElseIf Application.OpenForms.OfType(Of frmEmpUsu)().Any() Then
             CerrarForms()
 
         End If

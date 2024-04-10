@@ -10,8 +10,8 @@ Public Class frmVenCli
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCliV.Click
-        AbrirFormPanel(frmClientes, pnlVenCli)
-        frmClientes.rbCliAct.Checked = True
+        AbrirFormPanel(frmBase, pnlVenCli)
+        frmBase.rbCliAct.Checked = True
         ActualizarUltimosFormularios("frmClientes")
         'FormularioAbierto(frmDetVent, Button1)
     End Sub
@@ -34,11 +34,11 @@ Public Class frmVenCli
         If WindowState = FormWindowState.Minimized Then
 
         ElseIf WindowState = FormWindowState.Maximized Then
-            frmClientes.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            frmBase.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
         ElseIf WindowState = FormWindowState.Normal Then
-            frmClientes.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-            frmClientes.dgvClientes.RowHeadersWidth = 15
+            frmBase.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+            frmBase.dgvClientes.RowHeadersWidth = 15
 
         End If
     End Sub
@@ -47,16 +47,16 @@ Public Class frmVenCli
 
 
     Public Sub Mini()
-        frmClientes.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        frmBase.dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
         ' Configurar la propiedad de tamaño de filas para que las filas se ajusten al contenido
-        frmClientes.dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        frmBase.dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
 
         ' Habilitar el ajuste automático de la altura de las filas
-        frmClientes.dgvClientes.AllowUserToResizeRows = True
+        frmBase.dgvClientes.AllowUserToResizeRows = True
 
         ' Habilitar el ajuste automático del tamaño de las columnas
-        frmClientes.dgvClientes.AllowUserToResizeColumns = True
+        frmBase.dgvClientes.AllowUserToResizeColumns = True
 
         ' Opcional: Deshabilitar el ajuste automático del tamaño de la última columna
 

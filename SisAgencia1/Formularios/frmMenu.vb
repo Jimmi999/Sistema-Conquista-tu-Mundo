@@ -29,6 +29,8 @@
 
     Private Sub bOperaciones_Click(sender As Object, e As EventArgs) Handles bOperaciones.Click
         MostrarFormulariosEnLista()
+        frmPrincipal.AbrirFormulario(frmClientes)
+
     End Sub
 
     Private Sub bPersonal_Click(sender As Object, e As EventArgs) Handles bPersonal.Click
@@ -82,6 +84,14 @@
     End Sub
 
     Private Sub lblDescripcion_Click(sender As Object, e As EventArgs) Handles lblDescripcion.Click
+
+    End Sub
+
+    Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnFav.Click
+
+    End Sub
+
+    Private Sub gbMenu_Enter(sender As Object, e As EventArgs) Handles gbMenu.Enter
 
     End Sub
 End Class

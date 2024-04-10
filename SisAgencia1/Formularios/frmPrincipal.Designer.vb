@@ -39,7 +39,6 @@ Partial Class frmPrincipal
         btnDatos = New Button()
         pnlArchivo = New Panel()
         btnSalir = New Button()
-        btnSalirLog = New Button()
         btnInicio = New Button()
         btnArchivo = New Button()
         pbMnuDesp = New PictureBox()
@@ -97,9 +96,9 @@ Partial Class frmPrincipal
         pnlHerr.Controls.Add(btnAyuda)
         pnlHerr.Controls.Add(btnConfig)
         pnlHerr.Dock = DockStyle.Top
-        pnlHerr.Location = New Point(0, 477)
+        pnlHerr.Location = New Point(0, 500)
         pnlHerr.Name = "pnlHerr"
-        pnlHerr.Size = New Size(279, 77)
+        pnlHerr.Size = New Size(262, 77)
         pnlHerr.TabIndex = 9
         pnlHerr.Visible = False
         ' 
@@ -115,7 +114,7 @@ Partial Class frmPrincipal
         btnAyuda.ImageAlign = ContentAlignment.MiddleLeft
         btnAyuda.Location = New Point(0, 38)
         btnAyuda.Name = "btnAyuda"
-        btnAyuda.Size = New Size(279, 38)
+        btnAyuda.Size = New Size(262, 38)
         btnAyuda.TabIndex = 5
         btnAyuda.Text = "Ayuda"
         btnAyuda.TextAlign = ContentAlignment.MiddleLeft
@@ -133,7 +132,7 @@ Partial Class frmPrincipal
         btnConfig.ImageAlign = ContentAlignment.MiddleLeft
         btnConfig.Location = New Point(0, 0)
         btnConfig.Name = "btnConfig"
-        btnConfig.Size = New Size(279, 38)
+        btnConfig.Size = New Size(262, 38)
         btnConfig.TabIndex = 4
         btnConfig.Text = "Configuración"
         btnConfig.TextAlign = ContentAlignment.MiddleLeft
@@ -150,9 +149,9 @@ Partial Class frmPrincipal
         btnHerr.ForeColor = Color.White
         btnHerr.Image = My.Resources.Resources.icons8_herramientas_26
         btnHerr.ImageAlign = ContentAlignment.MiddleLeft
-        btnHerr.Location = New Point(0, 439)
+        btnHerr.Location = New Point(0, 462)
         btnHerr.Name = "btnHerr"
-        btnHerr.Size = New Size(279, 38)
+        btnHerr.Size = New Size(262, 38)
         btnHerr.TabIndex = 8
         btnHerr.Text = "        Herramientas"
         btnHerr.TextAlign = ContentAlignment.MiddleLeft
@@ -166,9 +165,9 @@ Partial Class frmPrincipal
         pnlDatos.Controls.Add(btnServicios)
         pnlDatos.Controls.Add(btnVentas)
         pnlDatos.Dock = DockStyle.Top
-        pnlDatos.Location = New Point(0, 287)
+        pnlDatos.Location = New Point(0, 310)
         pnlDatos.Name = "pnlDatos"
-        pnlDatos.Size = New Size(279, 152)
+        pnlDatos.Size = New Size(262, 152)
         pnlDatos.TabIndex = 7
         pnlDatos.Visible = False
         ' 
@@ -184,7 +183,7 @@ Partial Class frmPrincipal
         btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft
         btnUsuarios.Location = New Point(0, 114)
         btnUsuarios.Name = "btnUsuarios"
-        btnUsuarios.Size = New Size(279, 38)
+        btnUsuarios.Size = New Size(262, 38)
         btnUsuarios.TabIndex = 5
         btnUsuarios.Text = "Usuarios"
         btnUsuarios.TextAlign = ContentAlignment.MiddleLeft
@@ -202,7 +201,7 @@ Partial Class frmPrincipal
         btnOperaciones.ImageAlign = ContentAlignment.MiddleLeft
         btnOperaciones.Location = New Point(0, 76)
         btnOperaciones.Name = "btnOperaciones"
-        btnOperaciones.Size = New Size(279, 38)
+        btnOperaciones.Size = New Size(262, 38)
         btnOperaciones.TabIndex = 4
         btnOperaciones.Text = "Operaciones"
         btnOperaciones.TextAlign = ContentAlignment.MiddleLeft
@@ -220,7 +219,7 @@ Partial Class frmPrincipal
         btnServicios.ImageAlign = ContentAlignment.MiddleLeft
         btnServicios.Location = New Point(0, 38)
         btnServicios.Name = "btnServicios"
-        btnServicios.Size = New Size(279, 38)
+        btnServicios.Size = New Size(262, 38)
         btnServicios.TabIndex = 3
         btnServicios.Text = "Servicios"
         btnServicios.TextAlign = ContentAlignment.MiddleLeft
@@ -238,7 +237,7 @@ Partial Class frmPrincipal
         btnVentas.ImageAlign = ContentAlignment.MiddleLeft
         btnVentas.Location = New Point(0, 0)
         btnVentas.Name = "btnVentas"
-        btnVentas.Size = New Size(279, 38)
+        btnVentas.Size = New Size(262, 38)
         btnVentas.TabIndex = 2
         btnVentas.Text = "Ventas"
         btnVentas.TextAlign = ContentAlignment.MiddleLeft
@@ -255,9 +254,9 @@ Partial Class frmPrincipal
         btnDatos.ForeColor = Color.White
         btnDatos.Image = My.Resources.Resources.icons8_herramientas_26
         btnDatos.ImageAlign = ContentAlignment.MiddleLeft
-        btnDatos.Location = New Point(0, 249)
+        btnDatos.Location = New Point(0, 272)
         btnDatos.Name = "btnDatos"
-        btnDatos.Size = New Size(279, 38)
+        btnDatos.Size = New Size(262, 38)
         btnDatos.TabIndex = 6
         btnDatos.Text = "        Datos"
         btnDatos.TextAlign = ContentAlignment.MiddleLeft
@@ -267,12 +266,11 @@ Partial Class frmPrincipal
         ' 
         pnlArchivo.BackColor = Color.FromArgb(CByte(61), CByte(116), CByte(160))
         pnlArchivo.Controls.Add(btnSalir)
-        pnlArchivo.Controls.Add(btnSalirLog)
         pnlArchivo.Controls.Add(btnInicio)
         pnlArchivo.Dock = DockStyle.Top
-        pnlArchivo.Location = New Point(0, 128)
+        pnlArchivo.Location = New Point(0, 191)
         pnlArchivo.Name = "pnlArchivo"
-        pnlArchivo.Size = New Size(279, 121)
+        pnlArchivo.Size = New Size(262, 81)
         pnlArchivo.TabIndex = 3
         pnlArchivo.Visible = False
         ' 
@@ -286,31 +284,13 @@ Partial Class frmPrincipal
         btnSalir.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSalir.ForeColor = Color.White
         btnSalir.ImageAlign = ContentAlignment.MiddleLeft
-        btnSalir.Location = New Point(0, 80)
+        btnSalir.Location = New Point(0, 38)
         btnSalir.Name = "btnSalir"
-        btnSalir.Size = New Size(279, 38)
+        btnSalir.Size = New Size(262, 38)
         btnSalir.TabIndex = 5
         btnSalir.Text = "Salir"
         btnSalir.TextAlign = ContentAlignment.MiddleLeft
         btnSalir.UseVisualStyleBackColor = True
-        ' 
-        ' btnSalirLog
-        ' 
-        btnSalirLog.Dock = DockStyle.Top
-        btnSalirLog.FlatAppearance.BorderSize = 0
-        btnSalirLog.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(45), CByte(83), CByte(115))
-        btnSalirLog.FlatAppearance.MouseOverBackColor = Color.SteelBlue
-        btnSalirLog.FlatStyle = FlatStyle.Flat
-        btnSalirLog.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        btnSalirLog.ForeColor = Color.White
-        btnSalirLog.ImageAlign = ContentAlignment.MiddleLeft
-        btnSalirLog.Location = New Point(0, 38)
-        btnSalirLog.Name = "btnSalirLog"
-        btnSalirLog.Size = New Size(279, 42)
-        btnSalirLog.TabIndex = 4
-        btnSalirLog.Text = "Cerrar Sesión"
-        btnSalirLog.TextAlign = ContentAlignment.MiddleLeft
-        btnSalirLog.UseVisualStyleBackColor = True
         ' 
         ' btnInicio
         ' 
@@ -324,7 +304,7 @@ Partial Class frmPrincipal
         btnInicio.ImageAlign = ContentAlignment.MiddleLeft
         btnInicio.Location = New Point(0, 0)
         btnInicio.Name = "btnInicio"
-        btnInicio.Size = New Size(279, 38)
+        btnInicio.Size = New Size(262, 38)
         btnInicio.TabIndex = 2
         btnInicio.Text = "Inicio"
         btnInicio.TextAlign = ContentAlignment.MiddleLeft
@@ -342,9 +322,9 @@ Partial Class frmPrincipal
         btnArchivo.ForeColor = Color.White
         btnArchivo.Image = My.Resources.Resources.icons8_carpeta_26
         btnArchivo.ImageAlign = ContentAlignment.MiddleLeft
-        btnArchivo.Location = New Point(0, 93)
+        btnArchivo.Location = New Point(0, 156)
         btnArchivo.Name = "btnArchivo"
-        btnArchivo.Size = New Size(279, 35)
+        btnArchivo.Size = New Size(262, 35)
         btnArchivo.TabIndex = 2
         btnArchivo.Text = "         Archivo"
         btnArchivo.TextAlign = ContentAlignment.MiddleLeft
@@ -356,7 +336,7 @@ Partial Class frmPrincipal
         pbMnuDesp.Image = My.Resources.Resources.output_onlinepngtools__1_3
         pbMnuDesp.Location = New Point(0, 0)
         pbMnuDesp.Name = "pbMnuDesp"
-        pbMnuDesp.Size = New Size(279, 93)
+        pbMnuDesp.Size = New Size(262, 156)
         pbMnuDesp.SizeMode = PictureBoxSizeMode.CenterImage
         pbMnuDesp.TabIndex = 1
         pbMnuDesp.TabStop = False
@@ -472,6 +452,7 @@ Partial Class frmPrincipal
         FormBorderStyle = FormBorderStyle.None
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "frmPrincipal"
+        Tag = "Conquista Tu Mundo"
         Text = "Conquista Tu Mundo"
         pnlMnuDesp.ResumeLayout(False)
         pnlHerr.ResumeLayout(False)
@@ -515,7 +496,6 @@ Partial Class frmPrincipal
     Friend WithEvents btnDatos As Button
     Friend WithEvents pnlArchivo As Panel
     Friend WithEvents btnSalir As Button
-    Friend WithEvents btnSalirLog As Button
     Friend WithEvents btnInicio As Button
     Friend WithEvents btnArchivo As Button
     Friend WithEvents pbMnuDesp As PictureBox

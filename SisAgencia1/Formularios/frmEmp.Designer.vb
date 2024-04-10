@@ -22,389 +22,514 @@ Partial Class frmEmp
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEmp))
-        tsClientes = New ToolStrip()
-        tbsNuevo = New ToolStripButton()
-        tbsGuardar = New ToolStripButton()
-        ToolStripSeparator1 = New ToolStripSeparator()
-        tbsRestaurar = New ToolStripButton()
-        tbsEliminar = New ToolStripButton()
-        ToolStripSeparator2 = New ToolStripSeparator()
-        tbsCancelar = New ToolStripButton()
-        tbsSalir = New ToolStripButton()
-        gbEmpleado = New GroupBox()
-        Label1 = New Label()
-        Label2 = New Label()
-        txtTel = New TextBox()
-        txtMail = New TextBox()
-        Label6 = New Label()
-        label11 = New Label()
-        Label4 = New Label()
-        Label3 = New Label()
-        cmbPais = New ComboBox()
-        txtApe = New TextBox()
-        txtNom = New TextBox()
-        txtDNI = New TextBox()
-        gbDGVCliente = New GroupBox()
+        pnlDGVEmp = New Panel()
+        rbEmpAct = New RadioButton()
+        rbEmpCan = New RadioButton()
         txtBusEmp = New TextBox()
         dgvEmpleados = New DataGridView()
-        rbEmpCan = New RadioButton()
-        rbEmpAct = New RadioButton()
-        Label5 = New Label()
+        Label7 = New Label()
+        pnlDatEmp = New Panel()
+        btnNuevo = New Button()
+        txtDNI = New TextBox()
+        txtNom = New TextBox()
+        txtApe = New TextBox()
+        cmbPais = New ComboBox()
         txtDom = New TextBox()
-        tsClientes.SuspendLayout()
-        gbEmpleado.SuspendLayout()
-        gbDGVCliente.SuspendLayout()
+        txtMail = New TextBox()
+        txtTel = New TextBox()
+        btnGuaMod = New Button()
+        btnResEli = New Button()
+        btnCreUsu = New Button()
+        Label5 = New Label()
+        Label3 = New Label()
+        Label4 = New Label()
+        label11 = New Label()
+        Label6 = New Label()
+        Label2 = New Label()
+        Label1 = New Label()
+        Label8 = New Label()
+        PictureBox1 = New PictureBox()
+        ep = New ErrorProvider(components)
+        pnlDGVEmp.SuspendLayout()
         CType(dgvEmpleados, ComponentModel.ISupportInitialize).BeginInit()
+        pnlDatEmp.SuspendLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ep, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' tsClientes
+        ' pnlDGVEmp
         ' 
-        tsClientes.BackColor = Color.Azure
-        tsClientes.Items.AddRange(New ToolStripItem() {tbsNuevo, tbsGuardar, ToolStripSeparator1, tbsRestaurar, tbsEliminar, ToolStripSeparator2, tbsCancelar, tbsSalir})
-        tsClientes.Location = New Point(0, 0)
-        tsClientes.Name = "tsClientes"
-        tsClientes.RenderMode = ToolStripRenderMode.Professional
-        tsClientes.Size = New Size(800, 25)
-        tsClientes.TabIndex = 19
-        tsClientes.Text = "ToolStrip1"
+        pnlDGVEmp.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        pnlDGVEmp.BackColor = Color.FromArgb(CByte(224), CByte(235), CByte(243))
+        pnlDGVEmp.Controls.Add(rbEmpAct)
+        pnlDGVEmp.Controls.Add(rbEmpCan)
+        pnlDGVEmp.Controls.Add(txtBusEmp)
+        pnlDGVEmp.Controls.Add(dgvEmpleados)
+        pnlDGVEmp.Controls.Add(Label7)
+        pnlDGVEmp.Location = New Point(279, 0)
+        pnlDGVEmp.Name = "pnlDGVEmp"
+        pnlDGVEmp.Size = New Size(1625, 1041)
+        pnlDGVEmp.TabIndex = 2
         ' 
-        ' tbsNuevo
+        ' rbEmpAct
         ' 
-        tbsNuevo.DisplayStyle = ToolStripItemDisplayStyle.Image
-        tbsNuevo.Image = CType(resources.GetObject("tbsNuevo.Image"), Image)
-        tbsNuevo.ImageTransparentColor = Color.Magenta
-        tbsNuevo.Name = "tbsNuevo"
-        tbsNuevo.Size = New Size(23, 22)
-        tbsNuevo.Text = "Nuevo"
+        rbEmpAct.Appearance = Appearance.Button
+        rbEmpAct.AutoSize = True
+        rbEmpAct.BackColor = Color.SteelBlue
+        rbEmpAct.FlatAppearance.BorderColor = Color.SlateGray
+        rbEmpAct.FlatAppearance.CheckedBackColor = Color.FromArgb(CByte(55), CByte(104), CByte(145))
+        rbEmpAct.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        rbEmpAct.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        rbEmpAct.FlatStyle = FlatStyle.Flat
+        rbEmpAct.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbEmpAct.ForeColor = Color.White
+        rbEmpAct.Image = My.Resources.Resources.icons8_usuario_de_género_neutro_24
+        rbEmpAct.ImageAlign = ContentAlignment.MiddleLeft
+        rbEmpAct.Location = New Point(19, 51)
+        rbEmpAct.Name = "rbEmpAct"
+        rbEmpAct.Size = New Size(109, 32)
+        rbEmpAct.TabIndex = 12
+        rbEmpAct.TabStop = True
+        rbEmpAct.Text = "       Activos     "
+        rbEmpAct.TextAlign = ContentAlignment.MiddleRight
+        rbEmpAct.UseVisualStyleBackColor = False
         ' 
-        ' tbsGuardar
+        ' rbEmpCan
         ' 
-        tbsGuardar.DisplayStyle = ToolStripItemDisplayStyle.Image
-        tbsGuardar.Image = CType(resources.GetObject("tbsGuardar.Image"), Image)
-        tbsGuardar.ImageTransparentColor = Color.Magenta
-        tbsGuardar.Name = "tbsGuardar"
-        tbsGuardar.Size = New Size(23, 22)
-        tbsGuardar.Text = "Guardar"
-        ' 
-        ' ToolStripSeparator1
-        ' 
-        ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(6, 25)
-        ' 
-        ' tbsRestaurar
-        ' 
-        tbsRestaurar.DisplayStyle = ToolStripItemDisplayStyle.Image
-        tbsRestaurar.Enabled = False
-        tbsRestaurar.Image = CType(resources.GetObject("tbsRestaurar.Image"), Image)
-        tbsRestaurar.ImageTransparentColor = Color.Magenta
-        tbsRestaurar.Name = "tbsRestaurar"
-        tbsRestaurar.Size = New Size(23, 22)
-        tbsRestaurar.Text = "Restaurar"
-        ' 
-        ' tbsEliminar
-        ' 
-        tbsEliminar.DisplayStyle = ToolStripItemDisplayStyle.Image
-        tbsEliminar.Enabled = False
-        tbsEliminar.Image = CType(resources.GetObject("tbsEliminar.Image"), Image)
-        tbsEliminar.ImageTransparentColor = Color.Magenta
-        tbsEliminar.Name = "tbsEliminar"
-        tbsEliminar.Size = New Size(23, 22)
-        tbsEliminar.Text = "Eliminar"
-        ' 
-        ' ToolStripSeparator2
-        ' 
-        ToolStripSeparator2.Name = "ToolStripSeparator2"
-        ToolStripSeparator2.Size = New Size(6, 25)
-        ' 
-        ' tbsCancelar
-        ' 
-        tbsCancelar.DisplayStyle = ToolStripItemDisplayStyle.Image
-        tbsCancelar.Enabled = False
-        tbsCancelar.Image = CType(resources.GetObject("tbsCancelar.Image"), Image)
-        tbsCancelar.ImageTransparentColor = Color.Magenta
-        tbsCancelar.Name = "tbsCancelar"
-        tbsCancelar.Size = New Size(23, 22)
-        tbsCancelar.Text = "Cancelar"
-        ' 
-        ' tbsSalir
-        ' 
-        tbsSalir.DisplayStyle = ToolStripItemDisplayStyle.Image
-        tbsSalir.Image = CType(resources.GetObject("tbsSalir.Image"), Image)
-        tbsSalir.ImageTransparentColor = Color.Magenta
-        tbsSalir.Name = "tbsSalir"
-        tbsSalir.Size = New Size(23, 22)
-        tbsSalir.Text = "Salir"
-        ' 
-        ' gbEmpleado
-        ' 
-        gbEmpleado.Controls.Add(Label5)
-        gbEmpleado.Controls.Add(txtDom)
-        gbEmpleado.Controls.Add(Label1)
-        gbEmpleado.Controls.Add(Label2)
-        gbEmpleado.Controls.Add(txtTel)
-        gbEmpleado.Controls.Add(txtMail)
-        gbEmpleado.Controls.Add(Label6)
-        gbEmpleado.Controls.Add(label11)
-        gbEmpleado.Controls.Add(Label4)
-        gbEmpleado.Controls.Add(Label3)
-        gbEmpleado.Controls.Add(cmbPais)
-        gbEmpleado.Controls.Add(txtApe)
-        gbEmpleado.Controls.Add(txtNom)
-        gbEmpleado.Controls.Add(txtDNI)
-        gbEmpleado.Font = New Font("Microsoft Sans Serif", 8.25F)
-        gbEmpleado.Location = New Point(12, 28)
-        gbEmpleado.Name = "gbEmpleado"
-        gbEmpleado.Size = New Size(696, 156)
-        gbEmpleado.TabIndex = 20
-        gbEmpleado.TabStop = False
-        gbEmpleado.Text = "Datos Empleado"
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(359, 88)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(49, 13)
-        Label1.TabIndex = 32
-        Label1.Text = "Teléfono"
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(359, 60)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(38, 13)
-        Label2.TabIndex = 31
-        Label2.Text = "Correo"
-        ' 
-        ' txtTel
-        ' 
-        txtTel.Enabled = False
-        txtTel.Location = New Point(436, 80)
-        txtTel.MaxLength = 50
-        txtTel.Name = "txtTel"
-        txtTel.Size = New Size(254, 20)
-        txtTel.TabIndex = 30
-        ' 
-        ' txtMail
-        ' 
-        txtMail.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        txtMail.Enabled = False
-        txtMail.Location = New Point(436, 52)
-        txtMail.MaxLength = 50
-        txtMail.Name = "txtMail"
-        txtMail.Size = New Size(254, 20)
-        txtMail.TabIndex = 29
-        ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Location = New Point(11, 118)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(29, 13)
-        Label6.TabIndex = 28
-        Label6.Text = "País"
-        ' 
-        ' label11
-        ' 
-        label11.AutoSize = True
-        label11.Location = New Point(11, 89)
-        label11.Name = "label11"
-        label11.Size = New Size(55, 13)
-        label11.TabIndex = 27
-        label11.Text = "Apellido(s)"
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Location = New Point(11, 60)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(55, 13)
-        Label4.TabIndex = 26
-        Label4.Text = "Nombre(s)"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Location = New Point(11, 32)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(26, 13)
-        Label3.TabIndex = 25
-        Label3.Text = "DNI"
-        ' 
-        ' cmbPais
-        ' 
-        cmbPais.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        cmbPais.Enabled = False
-        cmbPais.FormattingEnabled = True
-        cmbPais.Location = New Point(88, 110)
-        cmbPais.MaxLength = 50
-        cmbPais.Name = "cmbPais"
-        cmbPais.Size = New Size(254, 21)
-        cmbPais.TabIndex = 24
-        ' 
-        ' txtApe
-        ' 
-        txtApe.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        txtApe.Enabled = False
-        txtApe.Location = New Point(88, 81)
-        txtApe.MaxLength = 50
-        txtApe.Name = "txtApe"
-        txtApe.Size = New Size(254, 20)
-        txtApe.TabIndex = 23
-        ' 
-        ' txtNom
-        ' 
-        txtNom.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        txtNom.Enabled = False
-        txtNom.Location = New Point(88, 52)
-        txtNom.MaxLength = 50
-        txtNom.Name = "txtNom"
-        txtNom.Size = New Size(254, 20)
-        txtNom.TabIndex = 22
-        ' 
-        ' txtDNI
-        ' 
-        txtDNI.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        txtDNI.Enabled = False
-        txtDNI.Location = New Point(88, 24)
-        txtDNI.MaxLength = 10
-        txtDNI.Name = "txtDNI"
-        txtDNI.Size = New Size(254, 20)
-        txtDNI.TabIndex = 21
-        ' 
-        ' gbDGVCliente
-        ' 
-        gbDGVCliente.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        gbDGVCliente.Controls.Add(txtBusEmp)
-        gbDGVCliente.Controls.Add(dgvEmpleados)
-        gbDGVCliente.Controls.Add(rbEmpCan)
-        gbDGVCliente.Controls.Add(rbEmpAct)
-        gbDGVCliente.Location = New Point(12, 195)
-        gbDGVCliente.Name = "gbDGVCliente"
-        gbDGVCliente.Size = New Size(776, 261)
-        gbDGVCliente.TabIndex = 21
-        gbDGVCliente.TabStop = False
-        gbDGVCliente.Text = "Empleados"
+        rbEmpCan.Appearance = Appearance.Button
+        rbEmpCan.AutoSize = True
+        rbEmpCan.BackColor = Color.SteelBlue
+        rbEmpCan.FlatAppearance.BorderColor = Color.SlateGray
+        rbEmpCan.FlatAppearance.CheckedBackColor = Color.FromArgb(CByte(55), CByte(104), CByte(145))
+        rbEmpCan.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        rbEmpCan.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        rbEmpCan.FlatStyle = FlatStyle.Flat
+        rbEmpCan.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbEmpCan.ForeColor = Color.White
+        rbEmpCan.Image = My.Resources.Resources.icons8_retire_hombre_usuario_24
+        rbEmpCan.ImageAlign = ContentAlignment.MiddleLeft
+        rbEmpCan.Location = New Point(134, 51)
+        rbEmpCan.Name = "rbEmpCan"
+        rbEmpCan.Size = New Size(107, 32)
+        rbEmpCan.TabIndex = 13
+        rbEmpCan.TabStop = True
+        rbEmpCan.Text = "      Eliminados "
+        rbEmpCan.TextAlign = ContentAlignment.MiddleRight
+        rbEmpCan.UseVisualStyleBackColor = False
         ' 
         ' txtBusEmp
         ' 
+        txtBusEmp.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         txtBusEmp.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        txtBusEmp.Font = New Font("Microsoft Sans Serif", 8.25F)
+        txtBusEmp.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtBusEmp.ForeColor = SystemColors.WindowFrame
-        txtBusEmp.Location = New Point(202, 17)
+        txtBusEmp.Location = New Point(1179, 51)
         txtBusEmp.MaxLength = 50
         txtBusEmp.Name = "txtBusEmp"
-        txtBusEmp.Size = New Size(559, 20)
-        txtBusEmp.TabIndex = 3
+        txtBusEmp.Size = New Size(427, 22)
+        txtBusEmp.TabIndex = 14
         txtBusEmp.Text = "Buscar"
         ' 
         ' dgvEmpleados
         ' 
         dgvEmpleados.AllowUserToAddRows = False
         dgvEmpleados.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = Color.White
+        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = Color.SteelBlue
+        dgvEmpleados.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         dgvEmpleados.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgvEmpleados.BackgroundColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(200), CByte(219), CByte(234))
+        DataGridViewCellStyle2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        dgvEmpleados.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvEmpleados.Location = New Point(6, 43)
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(200), CByte(219), CByte(234))
+        DataGridViewCellStyle3.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle3.ForeColor = Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue
+        DataGridViewCellStyle3.SelectionForeColor = Color.White
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        dgvEmpleados.DefaultCellStyle = DataGridViewCellStyle3
+        dgvEmpleados.Location = New Point(19, 82)
         dgvEmpleados.Name = "dgvEmpleados"
         dgvEmpleados.ReadOnly = True
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = SystemColors.Control
+        DataGridViewCellStyle4.Font = New Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+        dgvEmpleados.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        dgvEmpleados.RowHeadersVisible = False
         dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvEmpleados.Size = New Size(755, 212)
-        dgvEmpleados.TabIndex = 2
+        dgvEmpleados.Size = New Size(1587, 947)
+        dgvEmpleados.TabIndex = 15
         ' 
-        ' rbEmpCan
+        ' Label7
         ' 
-        rbEmpCan.AutoSize = True
-        rbEmpCan.Font = New Font("Microsoft Sans Serif", 8.25F)
-        rbEmpCan.Location = New Point(77, 18)
-        rbEmpCan.Name = "rbEmpCan"
-        rbEmpCan.Size = New Size(75, 17)
-        rbEmpCan.TabIndex = 1
-        rbEmpCan.TabStop = True
-        rbEmpCan.Text = "Eliminados"
-        rbEmpCan.UseVisualStyleBackColor = True
+        Label7.AutoSize = True
+        Label7.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label7.ForeColor = Color.SteelBlue
+        Label7.Location = New Point(19, 9)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(175, 24)
+        Label7.TabIndex = 44
+        Label7.Text = "Lista de Empleados"
         ' 
-        ' rbEmpAct
+        ' pnlDatEmp
         ' 
-        rbEmpAct.AutoSize = True
-        rbEmpAct.Font = New Font("Microsoft Sans Serif", 8.25F)
-        rbEmpAct.Location = New Point(11, 18)
-        rbEmpAct.Name = "rbEmpAct"
-        rbEmpAct.Size = New Size(60, 17)
-        rbEmpAct.TabIndex = 0
-        rbEmpAct.TabStop = True
-        rbEmpAct.Text = "Activos"
-        rbEmpAct.UseVisualStyleBackColor = True
+        pnlDatEmp.BackColor = Color.FromArgb(CByte(238), CByte(244), CByte(249))
+        pnlDatEmp.Controls.Add(btnNuevo)
+        pnlDatEmp.Controls.Add(txtDNI)
+        pnlDatEmp.Controls.Add(txtNom)
+        pnlDatEmp.Controls.Add(txtApe)
+        pnlDatEmp.Controls.Add(cmbPais)
+        pnlDatEmp.Controls.Add(txtDom)
+        pnlDatEmp.Controls.Add(txtMail)
+        pnlDatEmp.Controls.Add(txtTel)
+        pnlDatEmp.Controls.Add(btnGuaMod)
+        pnlDatEmp.Controls.Add(btnResEli)
+        pnlDatEmp.Controls.Add(btnCreUsu)
+        pnlDatEmp.Controls.Add(Label5)
+        pnlDatEmp.Controls.Add(Label3)
+        pnlDatEmp.Controls.Add(Label4)
+        pnlDatEmp.Controls.Add(label11)
+        pnlDatEmp.Controls.Add(Label6)
+        pnlDatEmp.Controls.Add(Label2)
+        pnlDatEmp.Controls.Add(Label1)
+        pnlDatEmp.Controls.Add(Label8)
+        pnlDatEmp.Controls.Add(PictureBox1)
+        pnlDatEmp.Dock = DockStyle.Left
+        pnlDatEmp.Location = New Point(0, 0)
+        pnlDatEmp.Name = "pnlDatEmp"
+        pnlDatEmp.Size = New Size(277, 1041)
+        pnlDatEmp.TabIndex = 3
         ' 
-        ' Label5
+        ' btnNuevo
         ' 
-        Label5.AutoSize = True
-        Label5.Location = New Point(359, 32)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(49, 13)
-        Label5.TabIndex = 34
-        Label5.Text = "Domicilio"
+        btnNuevo.Anchor = AnchorStyles.None
+        btnNuevo.BackColor = Color.FromArgb(CByte(238), CByte(244), CByte(249))
+        btnNuevo.FlatAppearance.BorderColor = Color.SlateGray
+        btnNuevo.FlatAppearance.BorderSize = 0
+        btnNuevo.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(238), CByte(244), CByte(249))
+        btnNuevo.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(200), CByte(219), CByte(234))
+        btnNuevo.FlatStyle = FlatStyle.Flat
+        btnNuevo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnNuevo.ForeColor = Color.SteelBlue
+        btnNuevo.Image = My.Resources.Resources.icons8_más_30
+        btnNuevo.ImageAlign = ContentAlignment.MiddleRight
+        btnNuevo.Location = New Point(140, 296)
+        btnNuevo.Name = "btnNuevo"
+        btnNuevo.Size = New Size(114, 34)
+        btnNuevo.TabIndex = 1
+        btnNuevo.Text = "   Nuevo"
+        btnNuevo.TextAlign = ContentAlignment.MiddleLeft
+        btnNuevo.UseVisualStyleBackColor = False
+        ' 
+        ' txtDNI
+        ' 
+        txtDNI.Anchor = AnchorStyles.None
+        txtDNI.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
+        txtDNI.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        txtDNI.Location = New Point(30, 336)
+        txtDNI.MaxLength = 10
+        txtDNI.Name = "txtDNI"
+        txtDNI.Size = New Size(224, 22)
+        txtDNI.TabIndex = 2
+        txtDNI.Tag = "DNI"
+        ' 
+        ' txtNom
+        ' 
+        txtNom.Anchor = AnchorStyles.None
+        txtNom.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
+        txtNom.Font = New Font("Microsoft Sans Serif", 9.75F)
+        txtNom.Location = New Point(30, 380)
+        txtNom.MaxLength = 50
+        txtNom.Name = "txtNom"
+        txtNom.Size = New Size(224, 22)
+        txtNom.TabIndex = 3
+        txtNom.Tag = "Nombre(s)"
+        ' 
+        ' txtApe
+        ' 
+        txtApe.Anchor = AnchorStyles.None
+        txtApe.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
+        txtApe.Font = New Font("Microsoft Sans Serif", 9.75F)
+        txtApe.Location = New Point(31, 424)
+        txtApe.MaxLength = 50
+        txtApe.Name = "txtApe"
+        txtApe.Size = New Size(224, 22)
+        txtApe.TabIndex = 4
+        txtApe.Tag = "Apellido(s)"
+        ' 
+        ' cmbPais
+        ' 
+        cmbPais.Anchor = AnchorStyles.None
+        cmbPais.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
+        cmbPais.Font = New Font("Microsoft Sans Serif", 9.75F)
+        cmbPais.FormattingEnabled = True
+        cmbPais.Location = New Point(31, 468)
+        cmbPais.MaxDropDownItems = 5
+        cmbPais.MaxLength = 50
+        cmbPais.Name = "cmbPais"
+        cmbPais.Size = New Size(224, 24)
+        cmbPais.TabIndex = 5
         ' 
         ' txtDom
         ' 
+        txtDom.Anchor = AnchorStyles.None
         txtDom.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
-        txtDom.Enabled = False
-        txtDom.Location = New Point(436, 24)
+        txtDom.Font = New Font("Microsoft Sans Serif", 9.75F)
+        txtDom.Location = New Point(31, 514)
         txtDom.MaxLength = 50
         txtDom.Name = "txtDom"
-        txtDom.Size = New Size(254, 20)
-        txtDom.TabIndex = 33
+        txtDom.Size = New Size(224, 22)
+        txtDom.TabIndex = 6
+        ' 
+        ' txtMail
+        ' 
+        txtMail.Anchor = AnchorStyles.None
+        txtMail.Font = New Font("Microsoft Sans Serif", 9.75F)
+        txtMail.Location = New Point(31, 558)
+        txtMail.MaxLength = 50
+        txtMail.Name = "txtMail"
+        txtMail.Size = New Size(224, 22)
+        txtMail.TabIndex = 7
+        txtMail.Tag = "Teléfono"
+        ' 
+        ' txtTel
+        ' 
+        txtTel.Anchor = AnchorStyles.None
+        txtTel.Font = New Font("Microsoft Sans Serif", 9.75F)
+        txtTel.Location = New Point(30, 605)
+        txtTel.MaxLength = 50
+        txtTel.Name = "txtTel"
+        txtTel.Size = New Size(224, 22)
+        txtTel.TabIndex = 8
+        txtTel.Tag = "Teléfono"
+        ' 
+        ' btnGuaMod
+        ' 
+        btnGuaMod.Anchor = AnchorStyles.None
+        btnGuaMod.BackColor = Color.SteelBlue
+        btnGuaMod.FlatAppearance.BorderColor = Color.SlateGray
+        btnGuaMod.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnGuaMod.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnGuaMod.FlatStyle = FlatStyle.Flat
+        btnGuaMod.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnGuaMod.ForeColor = Color.White
+        btnGuaMod.Image = My.Resources.Resources.icons8_botón_guardar_24
+        btnGuaMod.ImageAlign = ContentAlignment.MiddleLeft
+        btnGuaMod.Location = New Point(29, 637)
+        btnGuaMod.Name = "btnGuaMod"
+        btnGuaMod.Size = New Size(224, 31)
+        btnGuaMod.TabIndex = 9
+        btnGuaMod.Text = "Guardar"
+        btnGuaMod.UseVisualStyleBackColor = False
+        ' 
+        ' btnResEli
+        ' 
+        btnResEli.Anchor = AnchorStyles.None
+        btnResEli.BackColor = Color.SteelBlue
+        btnResEli.FlatAppearance.BorderColor = Color.SlateGray
+        btnResEli.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnResEli.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnResEli.FlatStyle = FlatStyle.Flat
+        btnResEli.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnResEli.ForeColor = Color.White
+        btnResEli.Image = My.Resources.Resources.icons8_eliminar_24
+        btnResEli.ImageAlign = ContentAlignment.MiddleLeft
+        btnResEli.Location = New Point(29, 674)
+        btnResEli.Name = "btnResEli"
+        btnResEli.Size = New Size(224, 31)
+        btnResEli.TabIndex = 10
+        btnResEli.Text = "Eliminar"
+        btnResEli.UseVisualStyleBackColor = False
+        ' 
+        ' btnCreUsu
+        ' 
+        btnCreUsu.Anchor = AnchorStyles.None
+        btnCreUsu.BackColor = Color.SteelBlue
+        btnCreUsu.FlatAppearance.BorderColor = Color.SlateGray
+        btnCreUsu.FlatAppearance.MouseDownBackColor = Color.SteelBlue
+        btnCreUsu.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(60), CByte(113), CByte(155))
+        btnCreUsu.FlatStyle = FlatStyle.Flat
+        btnCreUsu.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnCreUsu.ForeColor = Color.WhiteSmoke
+        btnCreUsu.Image = CType(resources.GetObject("btnCreUsu.Image"), Image)
+        btnCreUsu.ImageAlign = ContentAlignment.MiddleLeft
+        btnCreUsu.Location = New Point(30, 711)
+        btnCreUsu.Name = "btnCreUsu"
+        btnCreUsu.Size = New Size(224, 55)
+        btnCreUsu.TabIndex = 11
+        btnCreUsu.Text = "Crear Usuario"
+        btnCreUsu.UseVisualStyleBackColor = False
+        ' 
+        ' Label5
+        ' 
+        Label5.Anchor = AnchorStyles.Top
+        Label5.AutoSize = True
+        Label5.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label5.ForeColor = Color.SteelBlue
+        Label5.Location = New Point(29, 9)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(180, 24)
+        Label5.TabIndex = 43
+        Label5.Text = "Datos del Empleado"
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.None
+        Label3.AutoSize = True
+        Label3.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Location = New Point(30, 318)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(30, 16)
+        Label3.TabIndex = 37
+        Label3.Text = "DNI"
+        ' 
+        ' Label4
+        ' 
+        Label4.Anchor = AnchorStyles.None
+        Label4.AutoSize = True
+        Label4.Font = New Font("Microsoft Sans Serif", 9.75F)
+        Label4.Location = New Point(30, 361)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(71, 16)
+        Label4.TabIndex = 38
+        Label4.Text = "Nombre(s)"
+        ' 
+        ' label11
+        ' 
+        label11.Anchor = AnchorStyles.None
+        label11.AutoSize = True
+        label11.Font = New Font("Microsoft Sans Serif", 9.75F)
+        label11.Location = New Point(30, 405)
+        label11.Name = "label11"
+        label11.Size = New Size(72, 16)
+        label11.TabIndex = 39
+        label11.Text = "Apellido(s)"
+        ' 
+        ' Label6
+        ' 
+        Label6.Anchor = AnchorStyles.None
+        Label6.AutoSize = True
+        Label6.Font = New Font("Microsoft Sans Serif", 9.75F)
+        Label6.Location = New Point(31, 449)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(34, 16)
+        Label6.TabIndex = 40
+        Label6.Text = "País"
+        ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.None
+        Label2.AutoSize = True
+        Label2.Font = New Font("Microsoft Sans Serif", 9.75F)
+        Label2.Location = New Point(31, 495)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(63, 16)
+        Label2.TabIndex = 41
+        Label2.Text = "Domicilio"
+        ' 
+        ' Label1
+        ' 
+        Label1.Anchor = AnchorStyles.None
+        Label1.AutoSize = True
+        Label1.Font = New Font("Microsoft Sans Serif", 9.75F)
+        Label1.Location = New Point(31, 539)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(48, 16)
+        Label1.TabIndex = 42
+        Label1.Text = "Correo"
+        ' 
+        ' Label8
+        ' 
+        Label8.Anchor = AnchorStyles.None
+        Label8.AutoSize = True
+        Label8.Font = New Font("Microsoft Sans Serif", 9.75F)
+        Label8.Location = New Point(30, 586)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(61, 16)
+        Label8.TabIndex = 51
+        Label8.Text = "Teléfono"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        PictureBox1.Image = My.Resources.Resources.LOGO_Footer_Conquista_tu_Mundo_1
+        PictureBox1.Location = New Point(29, 58)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(225, 195)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox1.TabIndex = 49
+        PictureBox1.TabStop = False
+        ' 
+        ' ep
+        ' 
+        ep.ContainerControl = Me
         ' 
         ' frmEmp
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.Azure
-        ClientSize = New Size(800, 468)
-        Controls.Add(gbDGVCliente)
-        Controls.Add(gbEmpleado)
-        Controls.Add(tsClientes)
+        BackColor = Color.SteelBlue
+        ClientSize = New Size(1904, 1041)
+        Controls.Add(pnlDatEmp)
+        Controls.Add(pnlDGVEmp)
         Name = "frmEmp"
         Text = "frmEmp"
-        tsClientes.ResumeLayout(False)
-        tsClientes.PerformLayout()
-        gbEmpleado.ResumeLayout(False)
-        gbEmpleado.PerformLayout()
-        gbDGVCliente.ResumeLayout(False)
-        gbDGVCliente.PerformLayout()
+        pnlDGVEmp.ResumeLayout(False)
+        pnlDGVEmp.PerformLayout()
         CType(dgvEmpleados, ComponentModel.ISupportInitialize).EndInit()
+        pnlDatEmp.ResumeLayout(False)
+        pnlDatEmp.PerformLayout()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(ep, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
-    Friend WithEvents tsClientes As ToolStrip
-    Friend WithEvents tbsNuevo As ToolStripButton
-    Friend WithEvents tbsGuardar As ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents tbsRestaurar As ToolStripButton
-    Friend WithEvents tbsEliminar As ToolStripButton
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents tbsCancelar As ToolStripButton
-    Friend WithEvents tbsSalir As ToolStripButton
-    Friend WithEvents gbEmpleado As GroupBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents txtTel As TextBox
-    Friend WithEvents txtMail As TextBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents label11 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents cmbPais As ComboBox
-    Friend WithEvents txtApe As TextBox
-    Friend WithEvents txtNom As TextBox
-    Friend WithEvents txtDNI As TextBox
-    Friend WithEvents gbDGVCliente As GroupBox
+
+    Friend WithEvents pnlDGVEmp As Panel
+    Friend WithEvents Label7 As Label
+    Friend WithEvents rbEmpAct As RadioButton
+    Friend WithEvents rbEmpCan As RadioButton
     Friend WithEvents txtBusEmp As TextBox
     Friend WithEvents dgvEmpleados As DataGridView
-    Friend WithEvents rbEmpCan As RadioButton
-    Friend WithEvents rbEmpAct As RadioButton
-    Friend WithEvents Label5 As Label
+    Friend WithEvents pnlDatEmp As Panel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnNuevo As Button
+    Friend WithEvents txtDNI As TextBox
+    Friend WithEvents txtNom As TextBox
+    Friend WithEvents txtApe As TextBox
+    Friend WithEvents cmbPais As ComboBox
     Friend WithEvents txtDom As TextBox
+    Friend WithEvents txtMail As TextBox
+    Friend WithEvents btnGuaMod As Button
+    Friend WithEvents btnResEli As Button
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents label11 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txtTel As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents btnCreUsu As Button
+    Friend WithEvents ep As ErrorProvider
 End Class
