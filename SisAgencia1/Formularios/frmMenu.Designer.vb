@@ -142,7 +142,7 @@ Partial Class frmMenu
         bServicios.FlatStyle = FlatStyle.Flat
         bServicios.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bServicios.ForeColor = Color.SteelBlue
-        bServicios.Image = My.Resources.Resources.icons8_cascada_40
+        bServicios.Image = My.Resources.Resources.icons8_parque_nacional_50
         bServicios.ImageAlign = ContentAlignment.TopCenter
         bServicios.Location = New Point(104, 3)
         bServicios.Name = "bServicios"
@@ -159,7 +159,7 @@ Partial Class frmMenu
         bVentas.FlatStyle = FlatStyle.Flat
         bVentas.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bVentas.ForeColor = Color.SteelBlue
-        bVentas.Image = My.Resources.Resources.icons8_barato_2_60
+        bVentas.Image = My.Resources.Resources.icons8_ventas_501
         bVentas.ImageAlign = ContentAlignment.TopCenter
         bVentas.Location = New Point(10, 3)
         bVentas.Name = "bVentas"
@@ -176,7 +176,7 @@ Partial Class frmMenu
         bOperaciones.FlatStyle = FlatStyle.Flat
         bOperaciones.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bOperaciones.ForeColor = Color.SteelBlue
-        bOperaciones.Image = CType(resources.GetObject("bOperaciones.Image"), Image)
+        bOperaciones.Image = My.Resources.Resources.icons8_personas_en_coche__vista_lateral_60
         bOperaciones.ImageAlign = ContentAlignment.TopCenter
         bOperaciones.Location = New Point(198, 3)
         bOperaciones.Name = "bOperaciones"
@@ -205,7 +205,7 @@ Partial Class frmMenu
         Label1.AutoSize = True
         Label1.Font = New Font("Microsoft Sans Serif", 48F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.SteelBlue
-        Label1.Location = New Point(1360, 719)
+        Label1.Location = New Point(1331, 710)
         Label1.Name = "Label1"
         Label1.Size = New Size(194, 73)
         Label1.TabIndex = 5
@@ -220,7 +220,7 @@ Partial Class frmMenu
         Label2.AutoSize = True
         Label2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.SteelBlue
-        Label2.Location = New Point(1356, 792)
+        Label2.Location = New Point(1327, 783)
         Label2.Name = "Label2"
         Label2.Size = New Size(205, 20)
         Label2.TabIndex = 6

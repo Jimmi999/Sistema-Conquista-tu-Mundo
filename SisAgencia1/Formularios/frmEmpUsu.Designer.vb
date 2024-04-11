@@ -152,7 +152,7 @@ Partial Class frmEmpUsu
         btnUsu.FlatStyle = FlatStyle.Flat
         btnUsu.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnUsu.ForeColor = Color.White
-        btnUsu.Image = My.Resources.Resources.icons8_cliente_24
+        btnUsu.Image = My.Resources.Resources.icons8_usuario_25
         btnUsu.ImageAlign = ContentAlignment.MiddleLeft
         btnUsu.Location = New Point(0, 0)
         btnUsu.Name = "btnUsu"
@@ -171,7 +171,7 @@ Partial Class frmEmpUsu
         btnEmp.FlatStyle = FlatStyle.Flat
         btnEmp.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnEmp.ForeColor = Color.White
-        btnEmp.Image = My.Resources.Resources.icons8_ventas_24
+        btnEmp.Image = My.Resources.Resources.icons8_empleado_25
         btnEmp.ImageAlign = ContentAlignment.MiddleLeft
         btnEmp.Location = New Point(105, 0)
         btnEmp.Name = "btnEmp"

@@ -4,6 +4,8 @@ Imports Datos
 Imports Entidades
 Module modVariables
     Public NomEmp As String
+    Public NomEmpCreUsu As String
+    Public ApeEmpCreUsu As String
     Public NomCli As String
     Public ApeCli As String
     Public ApeEmp As String
@@ -13,6 +15,7 @@ Module modVariables
     Public titulo As String = "Conquista tu Mundo"
     Public banbl As Boolean
     Public dnibus As Integer
+
 
     Public Sub MensajeError(mensaje As String)
         frmPrincipal.niPpal.Text = "Conquista tu Mundo"

@@ -270,7 +270,7 @@ Public Class frmPrincipal
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        Dim respuesta = MessageBox.Show("¿Estás seguro de que deseas cerrar la aplicación?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim respuesta = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         ' Si el usuario confirma que quiere cerrar el formulario, cerrarlo
         If respuesta = DialogResult.Yes Then
@@ -281,7 +281,7 @@ Public Class frmPrincipal
 
 
     Public Sub CerrarForms()
-        Dim formulariosACerrar As Form() = {frmVenCli, FrmClientes, frmVender}
+        Dim formulariosACerrar As Form() = {frmVenCli, frmBase, frmVender, frmEmpUsu, frmEmp}
         CerrarFormularios(formulariosACerrar)
 
 
@@ -326,6 +326,9 @@ Public Class frmPrincipal
                 End If
             End If
         End If
+
+        frmEmpUsu.btnEmp.BackColor = Color.SteelBlue
+        frmVenCli.btnCliV.BackColor = Color.SteelBlue
     End Sub
 
     Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
@@ -355,7 +358,7 @@ Public Class frmPrincipal
 
         Else
             AbrirFormPanel(frmVenCli, pnlPpal)
-
+            btnVolver.Visible = True
         End If
     End Sub
 
@@ -424,7 +427,7 @@ Public Class frmPrincipal
 
         Else
             AbrirFormPanel(frmEmpUsu, pnlPpal)
-
+            btnVolver.Visible = True
         End If
     End Sub
 
@@ -459,6 +462,9 @@ Public Class frmPrincipal
             CerrarForms()
 
         End If
+        frmEmpUsu.btnEmp.BackColor = Color.SteelBlue
+        frmVenCli.btnCliV.BackColor = Color.SteelBlue
+
     End Sub
 
 
