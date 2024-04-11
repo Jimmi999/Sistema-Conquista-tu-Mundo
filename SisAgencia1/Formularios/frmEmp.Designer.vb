@@ -27,7 +27,6 @@ Partial Class frmEmp
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEmp))
         pnlDGVEmp = New Panel()
         rbEmpAct = New RadioButton()
         rbEmpCan = New RadioButton()
@@ -296,7 +295,7 @@ Partial Class frmEmp
         txtDom.BackColor = Color.FromArgb(CByte(249), CByte(252), CByte(255))
         txtDom.Font = New Font("Microsoft Sans Serif", 9.75F)
         txtDom.Location = New Point(31, 514)
-        txtDom.MaxLength = 50
+        txtDom.MaxLength = 100
         txtDom.Name = "txtDom"
         txtDom.Size = New Size(224, 22)
         txtDom.TabIndex = 6
@@ -371,7 +370,7 @@ Partial Class frmEmp
         btnCreUsu.FlatStyle = FlatStyle.Flat
         btnCreUsu.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnCreUsu.ForeColor = Color.WhiteSmoke
-        btnCreUsu.Image = CType(resources.GetObject("btnCreUsu.Image"), Image)
+        btnCreUsu.Image = My.Resources.Resources.icons8_añadir_usuario_masculino_25__1_
         btnCreUsu.ImageAlign = ContentAlignment.MiddleLeft
         btnCreUsu.Location = New Point(30, 711)
         btnCreUsu.Name = "btnCreUsu"

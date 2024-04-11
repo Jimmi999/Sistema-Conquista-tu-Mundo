@@ -8,6 +8,7 @@ Imports Entidades
 Public Class frmEmp
 #Region "Variables"
     Public CodEmp As Integer = 0
+    Public VerNomUsu As String
     Dim EmpleadosSP As New clsEmp
     Dim ClientesSP As New clsCli
     Dim EmpleadosDatos As New eEmp
@@ -18,7 +19,7 @@ Public Class frmEmp
     Private Sub EstablecerOrdenColumnasAct()
         If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then
             ' Definir el orden deseado de las columnas
-            Dim ordenColumnas As New List(Of String) From {"Número de empleado", "DNI", "Apellido", "Nombre", "País", "Domicilio", "Teléfono", "Correo", "Fecha de creación"}
+            Dim ordenColumnas As New List(Of String) From {"Número de empleado", "DNI", "Apellido", "Nombre", "País", "Domicilio", "Teléfono", "Correo", "Usuario", "Fecha de creación"}
 
             ' Verificar si el DataGridView contiene las columnas antes de intentar establecer su orden
             For Each nombreColumna As String In ordenColumnas
@@ -97,19 +98,19 @@ Public Class frmEmp
     Public Sub Determinar()
         If rbEmpAct.Checked = True Then
             GetCliAct()
-            'If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then------------------------------------------------------------------------------------
-            '    If dgvClientes.Columns.Contains("Usuario") Then
-            '        dgvClientes.Columns("Usuario").Visible = True
-            '    End If
-            'End If
+            If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then
+                If dgvEmpleados.Columns.Contains("Usuario") Then
+                    dgvEmpleados.Columns("Usuario").Visible = True
+                End If
+            End If
 
         Else
             GetCliCan()
-            'If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
-            '    If dgvClientes.Columns.Contains("Teléfonos") Then
-            '        dgvClientes.Columns("Teléfonos").Visible = False
-            '    End If
-            'End If
+            If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then
+                If dgvEmpleados.Columns.Contains("Usuario") Then
+                    dgvEmpleados.Columns("Usuario").Visible = False
+                End If
+            End If
 
         End If
 
@@ -120,7 +121,7 @@ Public Class frmEmp
         bandera = True
         txtDNI.Focus()
 
-        'frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155)-------------------------------
+        frmEmpUsu.btnEmp.BackColor = Color.FromArgb(60, 113, 155)
         txtDom.Enabled = True
         txtDNI.Enabled = True
         txtNom.Enabled = True
@@ -184,7 +185,7 @@ Public Class frmEmp
         'btnNuevo.Width = 95
         'btnNuevo.Location = New Point(159, 298)
         CodEmp = 0
-        'frmVenCli.btnCliV.BackColor = Color.SteelBlue---------------------------------------------
+        frmEmpUsu.btnEmp.BackColor = Color.SteelBlue
         txtBusEmp.Text = "Buscar"
         txtBusEmp.ForeColor = Color.Gray
         Determinar()
@@ -199,20 +200,20 @@ Public Class frmEmp
         Else
             If rbEmpAct.Checked Then
                 Me.dgvEmpleados.DataSource = EmpleadosSP.BuscarEmpleados(txtBusEmp.Text)
-                'If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
-                '    If dgvClientes.Columns.Contains("Teléfonos") Then
-                '        dgvClientes.Columns("Teléfonos").Visible = True
-                '    End If
-                'End If
+                If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then
+                    If dgvEmpleados.Columns.Contains("Usuario") Then
+                        dgvEmpleados.Columns("Usuario").Visible = True
+                    End If
+                End If
             Else
-                Me.dgvEmpleados.DataSource = EmpleadosSP.BuscarEmpleadoBaja(txtBusEmp.Text)
-                'If dgvClientes IsNot Nothing AndAlso dgvClientes.Columns.Count > 0 Then
-                '    If dgvClientes.Columns.Contains("Teléfonos") Then
-                '        dgvClientes.Columns("Teléfonos").Visible = False
-                '    End If
-                'End If
+                        Me.dgvEmpleados.DataSource = EmpleadosSP.BuscarEmpleadoBaja(txtBusEmp.Text)
+                If dgvEmpleados IsNot Nothing AndAlso dgvEmpleados.Columns.Count > 0 Then
+                    If dgvEmpleados.Columns.Contains("Usuario") Then
+                        dgvEmpleados.Columns("Usuario").Visible = False
+                    End If
+                End If
             End If
-        End If
+                End If
 
         ' Restablecer el orden de las columnas
         EstablecerOrdenColumnasAct()
@@ -271,14 +272,14 @@ Public Class frmEmp
             If dgvEmpleados.SelectedCells.Count > 0 Then ' Verifica si hay celdas seleccionadas
                 HabilitarNuevo()
                 bandera = False 'si es mod es false
-                btnCreUsu.Enabled = True
+
 
 
 
                 btnCreUsu.Visible = True
 
                 If rbEmpCan.Checked Then
-                    'tbsEliminar.Enabled = False---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    'tbsEliminar.Enabled = False------------------------------------------------???????---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                     ' tbsRestaurar.Enabled = True
                     Desactivar()
                     RestaurarColor()
@@ -287,7 +288,7 @@ Public Class frmEmp
                     txtTel.Visible = True
                 Else
                     btnGuaMod.Text = "Modificar"
-                    btnCreUsu.Visible = True
+
                     ' tbsEliminar.Enabled = True
                     EliminarColor()
                     txtTel.Visible = True
@@ -306,21 +307,34 @@ Public Class frmEmp
                         txtDNI.Text = row.Cells(1)?.Value?.ToString()
                         dnibus = row.Cells(1)?.Value?.ToString()
                         txtNom.Text = row.Cells(3)?.Value?.ToString()
-                        NomCli = row.Cells(3)?.Value?.ToString()
+                        NomEmpCreUsu = row.Cells(3)?.Value?.ToString()
                         txtApe.Text = row.Cells(2)?.Value?.ToString()
-                        ApeCli = row.Cells(2)?.Value?.ToString()
-                        cmbPais.SelectedValue = row.Cells(9)?.Value?.ToString() ' Suponiendo que la columna 8 contiene el código del país
+                        ApeEmpCreUsu = row.Cells(2)?.Value?.ToString()
+                        cmbPais.SelectedValue = row.Cells(10)?.Value?.ToString() ' Suponiendo que la columna 8 contiene el código del país
                         txtMail.Text = row.Cells(7)?.Value?.ToString()
                         txtDom.Text = row.Cells(5)?.Value?.ToString()
-                        'frmVenCli.btnCliV.BackColor = Color.FromArgb(60, 113, 155)----------------------------------------------------------------------------------------------------------------------------------------------
+                        frmEmpUsu.btnEmp.BackColor = Color.FromArgb(60, 113, 155)
                         txtTel.Text = row.Cells(6)?.Value?.ToString()
+                        VerNomUsu = row.Cells(8)?.Value?.ToString()
                         'dtpFecNac.Value = If(row.Cells(6)?.Value IsNot Nothing, Convert.ToDateTime(row.Cells(6).Value), DateTime.MinValue)
                     End If
                 End If
 
+                If rbEmpCan.Checked = True Then
+                    btnCreUsu.Visible = False
+                Else
+                    If VerNomUsu = "" Then
+                        btnCreUsu.Visible = True
+                        btnCreUsu.Enabled = True
+                    Else
+                        btnCreUsu.Visible = False
+                    End If
+
+                End If
+
 
             End If
-        End If
+            End If
 
     End Sub
 
@@ -356,16 +370,21 @@ Public Class frmEmp
 
     Private Sub btnResEli_Click(sender As Object, e As EventArgs) Handles btnResEli.Click
         If btnResEli.Text = "Eliminar" Then
-            Dim resultado As DialogResult = MessageBox.Show("Esta por dar de baja un empleado ¿Desea continuar?", "Eliminar empleado " & txtApe.Text & "," & txtNom.Text, MessageBoxButtons.YesNo)
+            Dim resultado As DialogResult = MessageBox.Show("Esta por dar de baja un empleado ¿Desea continuar?", "Eliminar empleado " & txtApe.Text & ", " & txtNom.Text & ".", MessageBoxButtons.YesNo)
             If resultado = DialogResult.Yes Then
-                If EmpleadosSP.BajaEmpleados(CodEmp, CodUsu) Then
-                    HabilitarNo()
-                    Determinar()
-
-                    'frmVenCli.btnCliV.BackColor = Color.SteelBlue - ---------------------------------------------------------
+                If NomUsu = VerNomUsu Then
+                    MensajeError("No puedes auto-eliminarte, " & txtApe.Text & ".")
                 Else
-                    MensajeError("Hubo un error al intentar dar de baja al empleado " & txtApe.Text)
+                    If EmpleadosSP.BajaEmpleados(CodEmp, CodUsu) Then
+                        HabilitarNo()
+                        Determinar()
+
+                        frmEmpUsu.btnEmp.BackColor = Color.SteelBlue
+                    Else
+                        MensajeError("Hubo un error al intentar dar de baja al empleado " & txtApe.Text & ".")
+                    End If
                 End If
+
             End If
         ElseIf btnResEli.Text = "Restaurar" Then
             'CampoBlanco2(Me.pnlDatCli, ep)
@@ -373,9 +392,9 @@ Public Class frmEmp
             If EmpleadosSP.RecEmpleados(CodEmp) Then
                 HabilitarNo()
                 Determinar()
-                'frmVenCli.btnCliV.BackColor = Color.SteelBlue----------------------------------------------------------------------
+                frmEmpUsu.btnEmp.BackColor = Color.SteelBlue
             Else
-                MensajeError("Hubo un error al intentar recuperar el empleado " & txtApe.Text)
+                MensajeError("Hubo un error al intentar recuperar el empleado " & txtApe.Text & ".")
             End If
             'ElseIf banbl = False Then
             '    MensajeError("Hay uno o mas campos vacios")
@@ -454,7 +473,7 @@ Public Class frmEmp
 
                                 EmpleadosDatos.CodEmp = CodEmp
                                 MensajeError("Registro actualizado exitosamente.")
-                                'frmVenCli.btnCliV.BackColor = Color.SteelBlue------------------------------------------
+                                frmEmpUsu.btnEmp.BackColor = Color.SteelBlue
                                 HabilitarNo()
                                 Determinar()
                             End If
@@ -520,20 +539,20 @@ Public Class frmEmp
     End Sub
 
     Private Sub btnCreUsu_Click(sender As Object, e As EventArgs) Handles btnCreUsu.Click
-        Dim frmTelefonos As New frmTelefonos()
-        AddHandler frmTelefonos.FormClosed, AddressOf frmTelefonos_FormClosed
+        Dim frmAgrUsu As New frmAgrUsu()
+        AddHandler frmAgrUsu.FormClosed, AddressOf frmAgrUsu_FormClosed
         'Me.Enabled = False ' Deshabilitar Formulario 1
         'frmVenCli.Enabled = False
         'frmMenu.Enabled = False
         'frmPrincipal.Enabled = False
-        frmTelefonos.ShowDialog()
-        frmTelefonos.TopMost = True
+        frmAgrUsu.ShowDialog()
+        frmAgrUsu.TopMost = True
 
 
 
     End Sub
 
-    Private Sub frmTelefonos_FormClosed(sender As Object, e As FormClosedEventArgs)
+    Private Sub frmAgrUsu_FormClosed(sender As Object, e As FormClosedEventArgs)
         'Me.Enabled = True ' Volver a habilitar Formulario 1 cuando Formulario 2 se cierre
         'frmVenCli.Enabled = True
         'frmMenu.Enabled = True

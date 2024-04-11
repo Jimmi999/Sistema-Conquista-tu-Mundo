@@ -28,13 +28,14 @@
     End Sub
 
     Private Sub bOperaciones_Click(sender As Object, e As EventArgs) Handles bOperaciones.Click
-        MostrarFormulariosEnLista()
+        'MostrarFormulariosEnLista()
         frmPrincipal.AbrirFormulario(frmClientes)
 
     End Sub
 
     Private Sub bPersonal_Click(sender As Object, e As EventArgs) Handles bPersonal.Click
         frmPrincipal.AbrirFormulario(frmEmpUsu)
+        frmPrincipal.btnVolver.Visible = True
     End Sub
 
     Private Sub MouseArriba(objeto As Object, mensaje As String)
